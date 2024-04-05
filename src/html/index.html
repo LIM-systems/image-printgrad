@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Принтград</title>
+  <link rel="stylesheet" href="./css/main.css" />
+
+  <link rel="icon" type="image/x-icon" href="./img/favicons/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    @@include('blocks/mainPage/nav_menu.html')
+    <main class="page">
+      <div class="page__wrapper">
+        <div class="page__screen screen">
+          <div class="screen__content">
+            <p class="screen__title screen__title_bg" data-swiper-parallax="50%" data-swiper-parallax-opacity="0">
+              Заголовок 1</p>
+            <p class="screen__text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatem iure, ducimus id quas beatae et eos repellendus nulla
+              nobis labore non cupiditate cumque facilis iste quaerat! Eaque
+              laboriosam praesentium blanditiis!
+            </p>
+          </div>
+          <div class="screen__body">
+            <div class="screen__image" data-swiper-parallax="33%" data-swiper-parallax-scale="1.1">
+              <img src="../img/bg/bg-1-1.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="page__screen screen">
+          <div class="screen__content">
+            <p class="screen__title screen__title_bg" data-swiper-parallax="50%" data-swiper-parallax-opacity="0">
+              Заголовок 2</p>
+          </div>
+          <div class="screen__body">
+            <div class="screen__image" data-swiper-parallax="33%" data-swiper-parallax-scale="1.1">
+              <img src="../img/bg/bg-1-1.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="page__screen screen">
+          <div class="screen__content">
+            <p class="screen__title screen__title_bg" data-swiper-parallax="50%" data-swiper-parallax-opacity="0">
+              Заголовок 3</p>
+          </div>
+          <div class="screen__body">
+            <div class="screen__image" data-swiper-parallax="33%" data-swiper-parallax-scale="1.1">
+              <img src="../img/bg/bg-1-1.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="page__pagination"></div> -->
+      <!-- <div class="page__scroll"></div> -->
+    </main>
+  </div>
+  <!-- @@include('blocks/footer.html') -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./js/index.bundle.js"></script>
+</body>
+
+</html>
