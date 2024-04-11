@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 .docs {
 	display: grid;
 	// row-gap: 40px;
@@ -21,11 +23,12 @@
 		list-style: decimal;
 	}
 
-	section, section.docs {
+	section,
+	section.docs {
 		padding: 40px 0;
 	}
 
-	section + section {
+	section+section {
 		border-top: 1px solid #dae5e9;
 	}
 
@@ -45,13 +48,15 @@
 	height: 300px;
 	margin: 50px auto;
 	background-color: #999;
-	background-position: center center; /* x y */
+	background-position: center center;
+	/* x y */
 	background-size: cover;
 	background-repeat: no-repeat;
 
 	// Работает retina scss webp
 	// грузится 2x jpeg 2x webp
 	background-image: url('./../img/project-02.jpg');
+
 	@include mediaBg() {
 		background-image: url('./../img/project-02@2x.jpg');
 	}
@@ -67,14 +72,14 @@
 	height: 300px;
 	margin: 50px auto;
 	background-color: #999;
-	background-position: center center; /* x y */
+	background-position: center center;
+	/* x y */
 	background-size: cover;
 	background-repeat: no-repeat;
 
 	// Не работает webp c подстановкой 2x, грузится jpg 2x
-	background-image: image-set(
-		url('./../img/project-02.jpg') 1x,
-		url('./../img/project-02@2x.jpg') 2x);
+	background-image: image-set(url('./../img/project-02.jpg') 1x,
+			url('./../img/project-02@2x.jpg') 2x);
 }
 
 .font-1 {
@@ -84,6 +89,6 @@
 }
 
 .font-2 {
-	font-family: 'FirasansBook';
+	// font-family: 'FirasansBook';
 	font-weight: 400;
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 .menu__wrapper {
     position: fixed;
     height: 100%;
@@ -5,24 +7,104 @@
     left: 0;
     transform: translate(0px, -50%);
     z-index: 50;
-    background-color: #000000c0;
-    padding: 20px;
+    padding: 10px;
     display: flex;
+    opacity: 1;
+    background-color: #00000000;
+    transition: all 1s;
+}
+
+.menu__wrapper.nav-menu_show-bg {
+    background-color: #0000008a;
+    transition: background-color 1s;
+}
+
+.menu__wrapper._hide_menu {
+    opacity: 0;
+    transition: opacity 1s;
 }
 
 .menu {
     align-self: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 0px;
+}
+
+.nav-menu menu {
+    position: relative;
 }
 
 .menu__link {
     color: #fff;
     font-size: 20px;
     transition: color 0.3s ease 0s;
+    position: relative;
+    height: 15px;
+    transition: all 0.5s;
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+}
+
+.menu__link.nav-menu_show-link {
+    height: 35px;
+    transition: all 0.3s;
+}
+
+.menu__link.nav-menu_show-link span {
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.menu__link.nav-menu_show-link div {
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.menu__link span {
+    opacity: 0;
 }
 
 .menu__link._active {
-    color: green;
+    color: #00D495;
+    height: 25px;
+}
+
+.menu__link:nth-child(2)._active {
+    color: #00D495;
+    height: 50px;
+}
+
+.menu__link._active.nav-menu_show-link {
+    height: 35px;
+}
+
+.menu__link:nth-child(2).nav-menu_show-link {
+    height: 55px;
+}
+
+.menu__link:nth-child(2)._active.nav-menu_show-link {
+    height: 55px;
+}
+
+.menu__link._active span {
+    opacity: 1;
+    font-family: 'Montserrat';
+}
+
+.menu__link._active div {
+    opacity: 0;
+}
+
+.menu__link div {
+    content: " ";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    z-index: 55;
+    top: 50%;
+    opacity: 1;
+    transition: all 0.2s
 }

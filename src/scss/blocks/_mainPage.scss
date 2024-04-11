@@ -1,0 +1,80 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo a {
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.main_menu {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex: 0.5;
+}
+
+.main_menu a {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.main_menu-burger {
+    display: none;
+}
+
+@media screen and (max-width: 850px) {
+    .main_menu {
+        display: none;
+    }
+
+    .main_menu-burger {
+        display: block;
+        position: relative;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+    }
+
+    .main_menu-burger div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30px;
+        height: 3px;
+        background-color: #000;
+    }
+
+    .main_menu-burger div::before {
+        content: '';
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: #000;
+        position: absolute;
+        top: -230%;
+    }
+
+    .main_menu-burger div::after {
+        content: '';
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: #000;
+        position: absolute;
+        top: 230%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .logo a {
+        font-size: 20px;
+    }
+}

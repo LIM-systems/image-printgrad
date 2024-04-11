@@ -1,5 +1,7 @@
+// ссылки навигационного меню
 export const menuLinks = document.querySelectorAll('.menu__link');
 
+// удаление активного класса меню
 export const menuSliderRemove = () => {
     let menuLinkActive = document.querySelector('.menu__link._active');
     if (menuLinkActive) {
@@ -7,6 +9,7 @@ export const menuSliderRemove = () => {
     }
 }
 
+// навигационное меню по слайдеру
 export const menuSlider = (slider) => {
     if (menuLinks.length > 0) {
         menuLinks[slider.realIndex].classList.add('_active');

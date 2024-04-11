@@ -1,0 +1,144 @@
+.inslider {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+}
+
+.inslider__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.i-s_screen {
+    flex: 1 0 100%;
+    position: relative;
+    background-color: #4FA9B2;
+}
+
+.i-s_screen:nth-child(2) {
+    background-color: #fff;
+    flex: 1 0 80%;
+}
+
+.inslider_screen__content {
+    position: relative;
+    z-index: 2;
+}
+
+.inslider_screen__content:first-child {
+    height: 100%;
+}
+
+.inslider_screen__body {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.inslider_screen__image {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.inslider_screen__image img {
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.color-main-title {
+    color: #34EEFF;
+    font-weight: 600;
+    font-size: 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+
+.main-slide-title {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 600;
+    margin-top: 150px;
+    max-width: 800px;
+}
+
+.more-info {
+    position: absolute;
+    right: 0%;
+    bottom: 0;
+    width: 600px;
+    height: 300px;
+    overflow: hidden;
+    cursor: none;
+    z-index: 100;
+}
+
+.more-info-content {
+    display: flex;
+    gap: 30px;
+    position: absolute;
+    top: 45%;
+    left: 15%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.more-info__title {
+    visibility: visible;
+    opacity: 1;
+    color: #fff;
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+.more-info__title._hide-more-info__title {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.more-info__button {
+    background-color: #00D495;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+    transform: scale(1);
+    visibility: visible;
+    transition: transform 0.3s;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.more-info__button._hide-more-info__button {
+    transform: scale(0);
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.more-info__button img {
+    align-self: center;
+    width: 50%;
+}
