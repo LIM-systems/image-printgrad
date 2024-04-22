@@ -16,6 +16,20 @@ export const toogleMobileMenu = () => {
     })
 }
 
+// все горизонтальные подслайдеры
+export const inSliders = document.querySelectorAll('.inslider')
+export let insliderIsOn = false
+export const inSlidersExs = []
+
+// все кнопки "подробнее"
+export const moreInfoButtons = document.querySelectorAll('.more-info')
+
+
+// массив slidersProgress нужнен, чтобы блокировать анимацию
+// внутри события progress во внутренних слайдерах, если была нажата кнопка назад
+// на панели навигационного меню
+export const slidersProgress = []
+
 
 // взаимодействие с навигационным меню
 export const navMenu = document.querySelector('.menu__wrapper')
@@ -31,9 +45,6 @@ export const navMenuHandle = () => {
     })
 }
 
+export const navBackButton = document.querySelector('.nav-back-button')
+export let activeInslider = 0
 
-// все горизонтальные подслайдеры
-export const inSliders = document.querySelectorAll('.inslider')
-
-// все кнопки "подробнее"
-export const moreInfoButtons = document.querySelectorAll('.more-info')

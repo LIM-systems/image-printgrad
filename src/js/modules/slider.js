@@ -1,7 +1,10 @@
-import { menuSlider, menuSliderRemove, menuLinks } from './navMenu'
+import { menuSlider, menuSliderRemove, menuLinks, inSliderBackButtonHandle } from './navMenu'
 import { setScrollType, moreInfoHandle } from './/utils'
 import { subsliderInit } from './subslider'
-import { sliderBegin, inSliders, moreInfoButtons } from './common'
+import {
+    sliderBegin, inSliders, moreInfoButtons,
+    inSlidersExs, slidersProgress
+} from './common'
 import { inSlidersInit } from './insliders'
 
 export const mainSliderInit = () => {
@@ -27,14 +30,25 @@ export const mainSliderInit = () => {
                 menuSlider(slider)
                 setScrollType(slider, wrapper)
                 subsliderInit(slider, screens[0]) // активация вертикального первого подслайдера
+                inSliderBackButtonHandle(slider) // активация кнопки возврата для вложенных слайдеров
                 wrapper.classList.add('_loaded')
                 // активация вложенных горизонтальных подслайдеров
-                const inslidersArr = []
                 Array.from(inSliders).forEach((item, i) => {
-                    inslidersArr.push(inSlidersInit(slider, i))
+                    slidersProgress.push(0)
+                    inSlidersExs.push(inSlidersInit(slider, i))
                 })
                 //активация кнопок "подробнее" на подслайдах
-                Array.from(moreInfoButtons).forEach((item, i) => moreInfoHandle(slider, inslidersArr[i], item))
+                Array.from(moreInfoButtons).forEach((item, i) => {
+                    const data = {
+                        mainSlider: slider,
+                        inslider: inSlidersExs[i],
+                        insliderElem: inSliders[i],
+                        moreInfoButton: item,
+                        index: i
+
+                    }
+                    moreInfoHandle(data)
+                })
             },
             slideChange: () => {
                 menuSliderRemove()

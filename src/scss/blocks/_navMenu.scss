@@ -108,3 +108,29 @@
     opacity: 1;
     transition: all 0.2s
 }
+
+.nav-back-button {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.8s;
+}
+
+.nav-back-button.nav-back-button-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.8s;
+}
+
+.nav-back-button img {
+    width: 20px;
+    transform: rotate(180deg);
+}
+
+.nav-back-button p {
+    align-self: center;
+    color: #fff;
+    margin-left: 10px;
+}

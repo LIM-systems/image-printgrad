@@ -1,4 +1,4 @@
-import { sliderBegin, navMenu } from './common'
+import { sliderBegin, navMenu, insliderIsOn } from './common'
 
 export const subsliderInit = (extSlider, screen) => {
     const wrapper = document.querySelector('.wrapper')
@@ -45,7 +45,7 @@ export const subsliderInit = (extSlider, screen) => {
         let scrollHide = -((Math.round(window.innerHeight / 100) * 100) + 100) // насколько скрыть
         let scrollSpeed = -1 * (scrollHide / 7) // шаг пролистывания в пикселях(скорость)
 
-        if (sliderBegin) {
+        if (sliderBegin && !insliderIsOn) {
             if (sliderProgress === 1 && scrollHide < sliderElem.offsetTop && sliderElem.offsetTop <= 0 && e.deltaY > 0) {
                 // если листаем вниз
                 // для плавного сокрытия слайдера наверх
@@ -92,7 +92,7 @@ export const subsliderInit = (extSlider, screen) => {
             }
         }
 
-        if (scrollHide >= sliderElem.offsetTop) {
+        if (scrollHide >= sliderElem.offsetTop && !insliderIsOn) {
             extSlider.enable()
         } else {
             extSlider.disable()
