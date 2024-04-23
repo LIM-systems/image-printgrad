@@ -1,4 +1,8 @@
-import { insliderIsOn, navBackButton, activeInslider } from './common'
+import {
+    insliderIsOn, navBackButton, activeInslider,
+    isSliderActive, sliderElement, isSliderUp,
+    footer, navMenu
+} from './common'
 
 // отключение/включение фримода
 export const setScrollType = (slider, wrapper) => {
@@ -6,7 +10,7 @@ export const setScrollType = (slider, wrapper) => {
         wrapper.classList.remove('_free')
         slider.params.freeMode.enabled = false
     }
-    for (let i = 0; i < slider.slides.length; i++) {
+    for (let i = 0; i < slider.slides.length - 1; i++) {
         const slide = slider.slides[i]
         const slideContent = slide.querySelector('.screen__content')
         if (slideContent) {
@@ -47,7 +51,7 @@ export const moreInfoHandle = (data) => {
         // двигаем слегка слайдер
         if (x > 0) {
             sliderShift = -Math.trunc(x * 0.092)
-            inslider.setProgress(sliderShift, 300)
+            inslider.translateTo(sliderShift, 300)
         }
     }
 
@@ -99,4 +103,53 @@ export const moreInfoHandle = (data) => {
             wrapper.classList.add('inslider__wrapper-open')
         }, 500)
     })
+}
+
+
+
+// отключаем скролл главного слайдер, 
+// если курсор наведён на поле со скроллом городов
+export const scrollToggle = (slider) => {
+    const citiesField = document.querySelector('.geography-cities')
+    if (citiesField) {
+        citiesField.addEventListener('mouseover', e => {
+            e.preventDefault()
+            isSliderActive = false
+            slider.disable()
+        })
+        citiesField.addEventListener('mouseout', e => {
+            isSliderActive = true
+            slider.enable()
+        })
+    }
+}
+
+
+// обработчик скролла на весь документ
+// если это последний слайд и мы крутим дальше вниз
+// чтобы увидеть футер
+export const documentScroll = (slider) => {
+    document.addEventListener('wheel', e => {
+        e.preventDefault()
+        const lastContent = sliderElement.querySelectorAll('.screen__content')[slider.slides.length - 1]
+        const lastScreen = sliderElement.querySelectorAll('.screen')[slider.slides.length - 1]
+        const isEnd = lastContent.getBoundingClientRect().bottom
+            <= window.innerHeight
+        if (e.deltaY > 0 && isEnd) {
+            navMenu.classList.add('_hide_menu')
+            isSliderUp = true
+            slider.disable()
+            const upValue = lastScreen.clientHeight - window.innerHeight + footer.clientHeight
+            sliderElement.style.overflow = 'visible'
+            sliderElement.style.top = -upValue + 'px'
+        } else if (e.deltaY < 0 && isEnd) {
+            sliderElement.style.top = 0 + 'px'
+            navMenu.classList.remove('_hide_menu')
+            setTimeout(() => {
+                sliderElement.style.overflow = 'hidden'
+                isSliderUp = false
+                slider.enable()
+            }, 500)
+        }
+    }, { passive: false })
 }

@@ -1,10 +1,14 @@
-import { sliderBegin, navMenu, insliderIsOn } from './common'
+import {
+    sliderBegin, navMenu, insliderIsOn,
+    isSliderActive, isSliderUp, footer,
+    sliderElement, sliderProgress
+} from './common'
 
 export const subsliderInit = (extSlider, screen) => {
     const wrapper = document.querySelector('.wrapper')
     const sliderElem = document.querySelector('.subslider')
     const scrollToggle = document.querySelector('.toggle-scroll')
-    let sliderProgress = 0
+    let subSliderProgress = 0
     const slider = new Swiper('.subslider', {
         wrapperClass: 'subslider__wrapper',
         slideClass: 'subslider__screen',
@@ -23,15 +27,8 @@ export const subsliderInit = (extSlider, screen) => {
             enabled: true,
         },
         on: {
-            slideChange: () => {
-                // if (slider.realIndex === slider.slides.length - 1) {
-                //     setTimeout(() => extSlider.mousewheel.enable(), 500)
-                // } else {
-                //     extSlider.mousewheel.disable()
-                // }
-            },
             progress: (slider, progress) => {
-                sliderProgress = progress
+                subSliderProgress = progress
             },
         }
     })
@@ -46,7 +43,7 @@ export const subsliderInit = (extSlider, screen) => {
         let scrollSpeed = -1 * (scrollHide / 7) // шаг пролистывания в пикселях(скорость)
 
         if (sliderBegin && !insliderIsOn) {
-            if (sliderProgress === 1 && scrollHide < sliderElem.offsetTop && sliderElem.offsetTop <= 0 && e.deltaY > 0) {
+            if (subSliderProgress === 1 && scrollHide < sliderElem.offsetTop && sliderElem.offsetTop <= 0 && e.deltaY > 0) {
                 // если листаем вниз
                 // для плавного сокрытия слайдера наверх
                 let part5 = scrollHide / 7 * 4 // когда 5\7 слайдера ушло наверх
@@ -67,7 +64,7 @@ export const subsliderInit = (extSlider, screen) => {
                 scrollToggle.style.display = 'block' // вешаем невидимый блок, чтобы слайдер не листался
                 sliderElem.style.top = sliderElem.offsetTop - scrollSpeed + 'px' // поднимаем слайдер вверх
                 scrollToggle.style.top = scrollToggle.offsetTop - scrollSpeed + 'px' // следом поднимаем блокирующий блок
-            } else if (sliderProgress === 1 && sliderElem.offsetTop <= -scrollSpeed && e.deltaY < 0) {
+            } else if (subSliderProgress === 1 && sliderElem.offsetTop <= -scrollSpeed && e.deltaY < 0) {
                 // если листаем вверх
                 if (-scrollSpeed * 2 <= sliderElem.offsetTop && sliderElem.offsetTop <= -scrollSpeed) {
                     // если слайдер почти весь опущен
@@ -92,7 +89,11 @@ export const subsliderInit = (extSlider, screen) => {
             }
         }
 
-        if (scrollHide >= sliderElem.offsetTop && !insliderIsOn) {
+        if (scrollHide >= sliderElem.offsetTop
+            && !insliderIsOn
+            && isSliderActive
+            && !isSliderUp
+        ) {
             extSlider.enable()
         } else {
             extSlider.disable()

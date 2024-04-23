@@ -38,16 +38,34 @@
 
         <div class="page__screen screen">
           <div class="screen__content">
-            <p class="screen__title screen__title_bg" data-swiper-parallax="50%" data-swiper-parallax-opacity="0">
-              Заголовок 3</p>
+            <div data-swiper-parallax="50%" data-swiper-parallax-opacity="0">
+              @@include('blocks/mainPage/inside_sliders/inslider_2.html')
+            </div>
           </div>
         </div>
+
+        <div class="page__screen screen">
+          <div class="screen__content">
+            <div data-swiper-parallax="50%" data-swiper-parallax-opacity="0">
+              @@include('blocks/mainPage/inside_sliders/inslider_3.html')Z
+            </div>
+          </div>
+        </div>
+
+        <div class="page__screen screen geography-screen">
+          <div class="screen__content">
+            <div data-swiper-parallax="10%" data-swiper-parallax-opacity="0">
+              @@include('blocks/mainPage/geography.html')
+            </div>
+          </div>
+        </div>
+
       </div>
       <!-- <div class="page__pagination"></div> -->
       <!-- <div class="page__scroll"></div> -->
     </main>
+    @@include('blocks/common/footer.html')
   </div>
-  <!-- @@include('blocks/footer.html') -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="./js/index.bundle.js"></script>
 </body>

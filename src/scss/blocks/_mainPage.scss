@@ -29,6 +29,93 @@
     display: none;
 }
 
+
+// блок с картой
+
+.geography-wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.geography-title {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    margin: 0;
+    z-index: 2;
+
+}
+
+.geography-content {
+    height: 100%;
+    display: flex;
+}
+
+.geography-cities-wrapper {
+    display: flex;
+    justify-content: center;
+    flex: none;
+    width: 300px;
+    padding-top: 150px;
+}
+
+.geography-cities {
+    align-self: center;
+    height: 300px;
+    overflow-y: scroll;
+    direction: rtl;
+    padding: 15px;
+    width: 250px;
+    /* Работает в Firefox */
+    // scrollbar-width: thin;
+    // scrollbar-color: #fff rgba(255, 255, 255, 0.519)
+}
+
+/* Работает в Chrome, Edge и Safari */
+.geography-cities::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+}
+
+.geography-cities::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 10px 10px #ffffff73;
+    border: solid 3px transparent;
+    border-radius: 10px;
+}
+
+.geography-cities::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 10px 10px #ffffff;
+    border: solid 3px transparent;
+    border-radius: 10px;
+}
+
+.geography-cities p {
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.geography-cities p:hover {
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.geography-map {
+    background: url('../../img/bg/map.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+    width: 100%;
+    height: 700px;
+}
+
+
+
 @media screen and (max-width: 850px) {
     .main_menu {
         display: none;

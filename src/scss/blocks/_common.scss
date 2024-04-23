@@ -149,6 +149,16 @@
     font-size: 15px;
 }
 
+// Footer
+.footer {
+    height: 300px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 0;
+
+}
+
 @media screen and (max-width: 850px) {
     .mobile_main_menu {
         display: block !important;

@@ -1,9 +1,12 @@
 import { menuSlider, menuSliderRemove, menuLinks, inSliderBackButtonHandle } from './navMenu'
-import { setScrollType, moreInfoHandle } from './/utils'
+import {
+    setScrollType, moreInfoHandle, scrollToggle,
+    documentScroll
+} from './/utils'
 import { subsliderInit } from './subslider'
 import {
     sliderBegin, inSliders, moreInfoButtons,
-    inSlidersExs, slidersProgress
+    inSlidersExs, slidersProgress, sliderProgress,
 } from './common'
 import { inSlidersInit } from './insliders'
 
@@ -31,6 +34,7 @@ export const mainSliderInit = () => {
                 setScrollType(slider, wrapper)
                 subsliderInit(slider, screens[0]) // активация вертикального первого подслайдера
                 inSliderBackButtonHandle(slider) // активация кнопки возврата для вложенных слайдеров
+                documentScroll(slider) // обработчик скролла на всю страницу
                 wrapper.classList.add('_loaded')
                 // активация вложенных горизонтальных подслайдеров
                 Array.from(inSliders).forEach((item, i) => {
@@ -49,6 +53,7 @@ export const mainSliderInit = () => {
                     }
                     moreInfoHandle(data)
                 })
+                scrollToggle(slider) // отключение скролла на городах на последнем слайде
             },
             slideChange: () => {
                 menuSliderRemove()
@@ -66,6 +71,8 @@ export const mainSliderInit = () => {
                 setScrollType(slider, wrapper)
             },
             progress: (slider, progress) => {
+                // записываем прогресс
+                sliderProgress = progress
                 // взаимодействие с саб слайдером - включение/отключение
                 // при включенном фримоде
                 if (progress === 0 && slider.params.freeMode.enabled) {
@@ -104,4 +111,5 @@ export const mainSliderInit = () => {
         // }
     })
     slider.init()
+
 }

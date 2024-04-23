@@ -1,3 +1,9 @@
+// главный слайдер
+export const sliderElement = document.querySelector('.page')
+export let sliderProgress = 0
+export let isSliderActive = true
+export let isSliderUp = false
+
 // конец подслайдера на главной странице
 export let sliderBegin = true
 
@@ -48,3 +54,6 @@ export const navMenuHandle = () => {
 export const navBackButton = document.querySelector('.nav-back-button')
 export let activeInslider = 0
 
+
+// футер
+export const footer = document.querySelector('.footer')

@@ -25,13 +25,14 @@
 
 .page {
   position: fixed;
+  z-index: 1;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   overflow: hidden;
   opacity: 1;
-  transition: opacity 0.5s;
+  transition: all 0.5s;
 }
 
 .page__wrapper {
@@ -45,6 +46,11 @@
   flex: 1 0 100%;
   position: relative;
   background-color: #4FA9B2;
+  border-top: 3px solid #286c72;
+}
+
+.screen.geography-screen {
+  padding: 100px 0px 0px 185px;
 }
 
 .screen__content {
@@ -55,6 +61,7 @@
 }
 
 .screen__content._hide_page {
+  visibility: hidden;
   opacity: 0;
   transition: opacity 1s;
 }
