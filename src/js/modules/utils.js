@@ -1,7 +1,7 @@
 import {
     insliderIsOn, navBackButton, activeInslider,
     isSliderActive, sliderElement, isSliderUp,
-    footer, navMenu
+    footer, navMenu, moreInfoButtons, slidersProgress
 } from './common'
 
 // отключение/включение фримода
@@ -119,7 +119,9 @@ export const scrollToggle = (slider) => {
         })
         citiesField.addEventListener('mouseout', e => {
             isSliderActive = true
-            slider.enable()
+            if (!isSliderUp) {
+                slider.enable()
+            }
         })
     }
 }
@@ -130,19 +132,23 @@ export const scrollToggle = (slider) => {
 // чтобы увидеть футер
 export const documentScroll = (slider) => {
     document.addEventListener('wheel', e => {
-        e.preventDefault()
         const lastContent = sliderElement.querySelectorAll('.screen__content')[slider.slides.length - 1]
         const lastScreen = sliderElement.querySelectorAll('.screen')[slider.slides.length - 1]
         const isEnd = lastContent.getBoundingClientRect().bottom
             <= window.innerHeight
-        if (e.deltaY > 0 && isEnd) {
+
+        if (e.deltaY > 0 && isEnd && isSliderActive) {
+            // крутим вниз
             navMenu.classList.add('_hide_menu')
             isSliderUp = true
             slider.disable()
-            const upValue = lastScreen.clientHeight - window.innerHeight + footer.clientHeight
+            let lastScreenSurplus = lastScreen.clientHeight - sliderElement.clientHeight
+            const upValue = lastScreen.clientHeight - window.innerHeight + footer.clientHeight - lastScreenSurplus
+            lastScreen.style.top = -lastScreenSurplus + 'px'
             sliderElement.style.overflow = 'visible'
             sliderElement.style.top = -upValue + 'px'
-        } else if (e.deltaY < 0 && isEnd) {
+        } else if (e.deltaY < 0 && isEnd && isSliderActive) {
+            // крутим вверх
             sliderElement.style.top = 0 + 'px'
             navMenu.classList.remove('_hide_menu')
             setTimeout(() => {
@@ -151,5 +157,11 @@ export const documentScroll = (slider) => {
                 slider.enable()
             }, 500)
         }
-    }, { passive: false })
+        if (slider.realIndex === slider.slides.length - 2) {
+            lastScreen.style.transition = 'all 0.3s'
+            lastScreen.style.top = 0 + 'px'
+        } else {
+            lastScreen.style.transition = 'none'
+        }
+    })
 }

@@ -6,7 +6,7 @@ import {
 import { subsliderInit } from './subslider'
 import {
     sliderBegin, inSliders, moreInfoButtons,
-    inSlidersExs, slidersProgress, sliderProgress,
+    inSlidersExs, sliderProgress
 } from './common'
 import { inSlidersInit } from './insliders'
 
@@ -38,7 +38,6 @@ export const mainSliderInit = () => {
                 wrapper.classList.add('_loaded')
                 // активация вложенных горизонтальных подслайдеров
                 Array.from(inSliders).forEach((item, i) => {
-                    slidersProgress.push(0)
                     inSlidersExs.push(inSlidersInit(slider, i))
                 })
                 //активация кнопок "подробнее" на подслайдах

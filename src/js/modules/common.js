@@ -31,10 +31,10 @@ export const inSlidersExs = []
 export const moreInfoButtons = document.querySelectorAll('.more-info')
 
 
-// массив slidersProgress нужнен, чтобы блокировать анимацию
+// slidersProgress  нужнен, чтобы блокировать анимацию
 // внутри события progress во внутренних слайдерах, если была нажата кнопка назад
 // на панели навигационного меню
-export const slidersProgress = []
+export let slidersProgress = 0
 
 
 // взаимодействие с навигационным меню

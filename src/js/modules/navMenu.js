@@ -1,7 +1,7 @@
 import {
     navBackButton, activeInslider, inSliders,
     inSlidersExs, moreInfoButtons, insliderIsOn,
-    slidersProgress,
+    slidersProgress
 } from './common'
 
 // ссылки навигационного меню
@@ -24,6 +24,7 @@ export const menuSlider = (slider) => {
             menuLink.addEventListener('click', e => {
                 e.preventDefault()
                 if (!slider.enabled) {
+                    slidersProgress = 0
                     inSlidersExs[activeInslider].disable()
                     slider.enable()
                     setTimeout(() => {
@@ -37,7 +38,7 @@ export const menuSlider = (slider) => {
                         circles[0].classList.remove('_hide-more-info__button')
                         circles[1].classList.add('_hide-more-info__button')
                         insliderIsOn = false
-                    }, 800)
+                    }, 1000)
                 }
                 menuSliderRemove()
                 slider.slideTo(i, 800)

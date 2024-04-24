@@ -24,12 +24,8 @@
     position: relative;
     background-color: #4FA9B2;
     border-left: 3px solid #286c72;
+    overflow: hidden;
 }
-
-// .i-s_screen:nth-child(2) {
-//     background-color: #fff;
-//     flex: 1 0 80%;
-// }
 
 .inslider_screen__content {
     padding: 0px 0px 0px 185px;
@@ -156,4 +152,187 @@
 .more-info__button img {
     align-self: center;
     width: 50%;
+}
+
+
+// размеры слайдов
+.clear-values-inslider-slide>.inslider_screen__content {
+    padding: 0px;
+}
+
+.clear-values-inslider-slide>.inslider_screen__content>p {
+    margin: 0;
+}
+
+.screen_size-1 {
+    flex: none;
+    width: 1000px;
+}
+
+.screen_size-2 {
+    flex: none;
+    width: 1300px;
+}
+
+.screen_size-3 {
+    flex: none;
+    width: 800px;
+}
+
+
+
+// вложенные слайдеры на главной странице
+
+//Первый
+//1
+.inslider__wrapper._inslider-main-0>.i-s_screen:nth-child(2)>.inslider_screen__content {
+    display: flex;
+    justify-content: center;
+}
+
+.inslider__wrapper._inslider-main-0>.i-s_screen:nth-child(2)>.inslider_screen__content p {
+    align-self: center;
+    text-align: center;
+}
+
+//2
+.inslider__wrapper._inslider-main-0>.i-s_screen:nth-child(3)>.inslider_screen__content {
+    padding: 80px 120px;
+}
+
+.inslider__wrapper._inslider-main-0>.i-s_screen:nth-child(3)>.inslider_screen__content>p:nth-child(2) {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+.inslider-0__slide-2_content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inslider-0__slide-2_content>div {
+    height: 100%;
+    width: 100;
+}
+
+.inslider-0__slide-2_content p {
+    font-size: 20px;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.inslider-0__slide-2_content>div:nth-child(2) {
+    padding-top: 70px;
+}
+
+.inslider-0__slide-2_content>div:nth-child(3) {
+    padding-top: 200px;
+}
+
+//3 
+.inslider__wrapper._inslider-main-0>.i-s_screen:nth-child(4)>.inslider_screen__content {
+    padding: 100px 170px;
+    background-color: #fff;
+}
+
+.inslider__wrapper._inslider-main-0>.i-s_screen:nth-child(4) p {
+    color: #4FA9B2;
+}
+
+//4
+.inslider__wrapper._inslider-main-0>.i-s_screen:nth-child(5)>.inslider_screen__content {}
+
+.inslider-0__slide-4_content {
+    background-color: #ffffffbd;
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 50px 30px;
+
+}
+
+.inslider-0__slide-4_content>p {
+    margin: 0;
+    margin-bottom: 40px;
+    color: #000;
+}
+
+//Второй
+//1
+.inslider__wrapper._inslider-main-1>.i-s_screen:nth-child(2)>.inslider_screen__content {
+    display: flex;
+    justify-content: center;
+}
+
+.inslider__wrapper._inslider-main-1>.i-s_screen:nth-child(2)>.inslider_screen__content p {
+    align-self: center;
+    text-align: center;
+}
+
+//2, 4
+.inslider__wrapper._inslider-main-1>.i-s_screen:nth-child(3)>.inslider_screen__content,
+.inslider__wrapper._inslider-main-1>.i-s_screen:nth-child(5)>.inslider_screen__content {
+    padding: 100px 120px;
+    background-color: #fff;
+}
+
+.inslider__wrapper._inslider-main-1>.i-s_screen:nth-child(3) p:nth-child(1),
+.inslider__wrapper._inslider-main-1>.i-s_screen:nth-child(5) p:nth-child(1) {
+    color: #4FA9B2;
+}
+
+.inslider__wrapper._inslider-main-1>.i-s_screen:nth-child(3)>.inslider_screen__content>p:nth-child(2),
+.inslider__wrapper._inslider-main-1>.i-s_screen:nth-child(5)>.inslider_screen__content>p:nth-child(2) {
+    font-weight: 600;
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+}
+
+//3
+.inslider__wrapper._inslider-main-1>.i-s_screen:nth-child(4)>.inslider_screen__content {}
+
+.inslider-1__slide-4_content {
+    position: absolute;
+    top: 15%;
+    left: 30%;
+    font-weight: 600;
+    color: #fff;
+}
+
+
+//4 
+.inslider__wrapper._inslider-main-1>.i-s_screen:nth-child(6)>.inslider_screen__content {}
+
+.inslider-1__slide-6_content {
+    position: absolute;
+    top: 15%;
+    left: 30%;
+    font-weight: 600;
+    color: #fff;
+}
+
+
+//Третий
+//1
+.inslider__wrapper._inslider-main-2>.i-s_screen:nth-child(2)>.inslider_screen__content {
+    display: flex;
+    justify-content: center;
+}
+
+.inslider__wrapper._inslider-main-2>.i-s_screen:nth-child(2)>.inslider_screen__content p {
+    align-self: center;
+    text-align: center;
+}
+
+//2 
+.inslider__wrapper._inslider-main-2>.i-s_screen:nth-child(3)>.inslider_screen__content {
+    padding: 20px;
+}
+
+.inslider__wrapper._inslider-main-2>.i-s_screen:nth-child(3)>.inslider_screen__content img {
+    width: 400px;
 }

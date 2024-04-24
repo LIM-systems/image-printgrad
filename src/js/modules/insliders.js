@@ -27,8 +27,7 @@ export const inSlidersInit = (extSlider, index) => {
             },
             progress: (slider, progress) => {
                 // отключем под слайдер и включаем главный слайдер
-                console.log()
-                if (progress === 0 && slidersProgress[index] !== 0 && insliderIsOn) {
+                if (progress === 0 && slidersProgress !== 0 && insliderIsOn) {
                     const wrapper = inSliders[index].querySelector('.inslider__wrapper')
                     const text = moreInfoButtons[index].querySelector('.more-info__title')
                     const circles = moreInfoButtons[index].querySelectorAll('.more-info__button')
@@ -44,7 +43,7 @@ export const inSlidersInit = (extSlider, index) => {
                         insliderIsOn = false
                     }, 800)
                 }
-                slidersProgress[index] = progress
+                slidersProgress = progress
             },
         }
     })
