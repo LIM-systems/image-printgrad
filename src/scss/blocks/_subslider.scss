@@ -8,6 +8,10 @@
     z-index: 1500;
 }
 
+.subslider.subslider-mobile {
+    position: relative;
+}
+
 .subslider._suslider-top-0 {
     top: 0 !important;
     transition: all 0.5s !important;

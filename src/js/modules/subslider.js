@@ -99,4 +99,6 @@ export const subsliderInit = (extSlider, screen) => {
             extSlider.disable()
         }
     }, { passive: false })
+
+    return slider
 }

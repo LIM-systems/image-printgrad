@@ -1,3 +1,6 @@
+export const pagePath = window.location.pathname
+export let isMobile = false
+
 // главный слайдер
 export const sliderElement = document.querySelector('.page')
 export let sliderProgress = 0

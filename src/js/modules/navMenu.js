@@ -3,6 +3,7 @@ import {
     inSlidersExs, moreInfoButtons, insliderIsOn,
     slidersProgress
 } from './common'
+import { toogleParallax } from './utils'
 
 // ссылки навигационного меню
 export const menuLinks = document.querySelectorAll('.menu__link');
@@ -24,11 +25,13 @@ export const menuSlider = (slider) => {
             menuLink.addEventListener('click', e => {
                 e.preventDefault()
                 if (!slider.enabled) {
+                    const data = toogleParallax(inSliders[activeInslider])
                     slidersProgress = 0
                     inSlidersExs[activeInslider].disable()
                     slider.enable()
                     setTimeout(() => {
                         const wrapper = inSliders[activeInslider].querySelector('.inslider__wrapper')
+                        wrapper.classList.remove('inslider__wrapper-open')
                         const text = moreInfoButtons[activeInslider].querySelector('.more-info__title')
                         const circles = moreInfoButtons[activeInslider].querySelectorAll('.more-info__button')
                         inSlidersExs[activeInslider].setProgress(0, 0)
@@ -38,6 +41,7 @@ export const menuSlider = (slider) => {
                         circles[0].classList.remove('_hide-more-info__button')
                         circles[1].classList.add('_hide-more-info__button')
                         insliderIsOn = false
+                        toogleParallax(inSliders[activeInslider], data)
                     }, 1000)
                 }
                 menuSliderRemove()

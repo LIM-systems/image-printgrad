@@ -105,13 +105,20 @@
     transition: all 0.3s;
 }
 
+.geography-cities p.clicked-geography-city {
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+
 .geography-map {
-    background: url('../../img/bg/map.png');
+    background: url('../../img/map/moscow.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center right;
     width: 100%;
-    height: 700px;
+    height: 600px;
+    transition: all 0.3s;
 }
 
 

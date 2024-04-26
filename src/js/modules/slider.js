@@ -1,7 +1,7 @@
 import { menuSlider, menuSliderRemove, menuLinks, inSliderBackButtonHandle } from './navMenu'
 import {
     setScrollType, moreInfoHandle, scrollToggle,
-    documentScroll
+    documentScroll, slidersToMobile
 } from './/utils'
 import { subsliderInit } from './subslider'
 import {
@@ -13,6 +13,7 @@ import { inSlidersInit } from './insliders'
 export const mainSliderInit = () => {
     const wrapper = document.querySelector('.wrapper')
     const screens = document.querySelectorAll('.screen__content')
+    let subslider = null
     const slider = new Swiper('.page', {
         wrapperClass: 'page__wrapper',
         slideClass: 'page__screen',
@@ -32,7 +33,7 @@ export const mainSliderInit = () => {
             init: () => {
                 menuSlider(slider)
                 setScrollType(slider, wrapper)
-                subsliderInit(slider, screens[0]) // активация вертикального первого подслайдера
+                subslider = subsliderInit(slider, screens[0]) // активация вертикального первого подслайдера
                 inSliderBackButtonHandle(slider) // активация кнопки возврата для вложенных слайдеров
                 documentScroll(slider) // обработчик скролла на всю страницу
                 wrapper.classList.add('_loaded')
@@ -68,6 +69,9 @@ export const mainSliderInit = () => {
             },
             resize: () => {
                 setScrollType(slider, wrapper)
+                if (window.innerWidth <= 850) {
+                    slidersToMobile(slider, subslider)
+                }
             },
             progress: (slider, progress) => {
                 // записываем прогресс
@@ -85,15 +89,6 @@ export const mainSliderInit = () => {
                 } else {
                     sliderBegin = false
                 }
-            },
-            slidePrevTransitionStart: slider => {
-                // console.log(slider.progress)
-                // console.log(slider.progress === 0)
-                // if (slider.progress === 0) {
-                //     setTimeout(() => sliderBegin = true, 900)
-                // } else {
-                //     setTimeout(() => sliderBegin = false, 900)
-                // }
             }
         }
         // pagination: {

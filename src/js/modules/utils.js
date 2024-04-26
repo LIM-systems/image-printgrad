@@ -1,8 +1,11 @@
 import {
-    insliderIsOn, navBackButton, activeInslider,
+    insliderIsOn, navBackButton, isMobile, activeInslider,
     isSliderActive, sliderElement, isSliderUp,
-    footer, navMenu, moreInfoButtons, slidersProgress
+    footer, navMenu,
+    inSlidersExs,
+    moreInfoButtons,
 } from './common'
+import { inSlidersInit } from './insliders'
 
 // отключение/включение фримода
 export const setScrollType = (slider, wrapper) => {
@@ -96,11 +99,20 @@ export const moreInfoHandle = (data) => {
         sliderShift = 0
         mainSlider.disable()
         inslider.enable()
-        let slideTo = window.innerWidth / - 6 * 5
-        inslider.translateTo(slideTo, 1000)
+        let firstSlidePart = window.innerWidth / 6 * 5
+        const screens = insliderElem.querySelectorAll('.i-s_screen')
+        const secondSlide = insliderElem.querySelector('.i-s_screen:nth-child(2)')
+        const data = toogleTransition(secondSlide, false)
+        let screensWidth = 0
+        screens.forEach(item => {
+            screensWidth += item.clientWidth
+        })
+        let slideTo = firstSlidePart / screensWidth
+        inslider.setProgress(slideTo, 1000)
         navBackButton.classList.remove('nav-back-button-hidden')
         setTimeout(() => {
             wrapper.classList.add('inslider__wrapper-open')
+            toogleTransition(secondSlide, data)
         }, 500)
     })
 }
@@ -164,4 +176,121 @@ export const documentScroll = (slider) => {
             lastScreen.style.transition = 'none'
         }
     })
+}
+
+
+window.addEventListener('load', () => {
+    // мобильный экран или нет
+    window.innerWidth <= 850 ? isMobile = true : isMobile = false
+
+    // печатание и стирание текста
+    setTimeout(() => {
+        const typed = new Typed('.typed-text-1', {
+            strings: ['преумножить уровень доходов', 'перейти на новый уровень сервиса',
+                'достичь успеха в развитии бизнеса'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        })
+    }, 300)
+
+    setTimeout(() => {
+        const typed = new Typed('.typed-text-2', {
+            strings: ['удобно', 'легко',
+                'надежно', 'выгодно'],
+            typeSpeed: 80,
+            backSpeed: 50,
+            loop: true
+        })
+    }, 300)
+})
+
+
+// сбрасываем весь паралакс у внутренних слайдеров при переключении внешнего слайдера
+// через навигационное меню
+export const toogleParallax = (elem, data = null) => {
+    const allElements = elem.querySelectorAll('*');
+    const returnData = []
+    if (!data) {
+        allElements.forEach(element => {
+            const attributes = element.attributes;
+            const attributesArr = []
+            for (let i = 0; i < attributes.length; i++) {
+                if (attributes[i].name.startsWith('data-swiper-parallax')) {
+                    attributesArr.push({
+                        name: attributes[i].name,
+                        value: attributes[i].value
+                    })
+                    element.setAttribute(attributes[i].name, 0)
+                }
+            }
+            if (attributesArr.length > 0) {
+                returnData.push({
+                    element: element,
+                    attributes: attributesArr
+                })
+            }
+        });
+        return returnData
+    } else {
+        data.forEach(item => {
+            item.attributes.forEach(atr => {
+                item.element.setAttribute(atr.name, atr.value)
+            })
+        });
+    }
+}
+
+
+// переключаем свойство transition
+// для лучшего отображения 2го слайда 
+// во вложенных слайдераъ
+function toogleTransition(elem, data = false) {
+    if (data === null) return
+    const allElements = elem.querySelectorAll('*');
+    const returnData = []
+    if (!data) {
+        allElements.forEach(element => {
+            const attributes = element.attributes;
+            for (let i = 0; i < attributes.length; i++) {
+                if (attributes[i].name.startsWith('data-swiper-parallax')) {
+                    element.classList.add('toggle-parallax-transition')
+                    returnData.push(element)
+
+                }
+            }
+        });
+        return returnData.length === 0 ? null : returnData
+    } else {
+        data.forEach(item => {
+            item.classList.remove('toggle-parallax-transition')
+        });
+    }
+}
+
+
+// переключение слайдеров на мобильный режим
+export const slidersToMobile = (slider, subslider) => {
+    // главный слайдер
+    const wrapper = document.querySelector('.wrapper')
+    wrapper.classList.add('wrapper_mobile')
+    slider.params.freeMode.enabled = true;
+
+
+
+    // сабслайдер
+    const subsliderEl = document.querySelector('.subslider')
+    subsliderEl.classList.add('subslider-mobile')
+    console.log('test')
+
+
+    // вложенные слайдеры
+    moreInfoButtons.forEach(item => {
+        item.style.display = 'none'
+    })
+    inSlidersExs.forEach((item, i) => {
+        item.destroy()
+    })
+
+    // другие обработчики и скрипты
 }

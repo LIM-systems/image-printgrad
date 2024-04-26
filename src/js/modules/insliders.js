@@ -7,12 +7,14 @@ export const inSlidersInit = (extSlider, index) => {
     const slider = new Swiper('.inslider_' + index, {
         wrapperClass: 'inslider__wrapper',
         slideClass: 'inslider__screen',
-        direction: 'horizontal',
+        direction: 'vertical',
         slidesPerView: 'auto',
         parallax: true,
         mousewheel: {
+            thresholdTime: 5,
+            thresholdDelta: 5,
             releaseOnEdges: true,
-            sensitivity: 3,
+            sensitivity: 2,
         },
         watchOverflow: true,
         speed: 900,
@@ -26,8 +28,11 @@ export const inSlidersInit = (extSlider, index) => {
 
             },
             progress: (slider, progress) => {
+                slidersProgress = progress
+            },
+            scroll: (slider, e) => {
                 // отключем под слайдер и включаем главный слайдер
-                if (progress === 0 && slidersProgress !== 0 && insliderIsOn) {
+                if (slidersProgress === 0 && insliderIsOn && e.deltaY < 0) {
                     const wrapper = inSliders[index].querySelector('.inslider__wrapper')
                     const text = moreInfoButtons[index].querySelector('.more-info__title')
                     const circles = moreInfoButtons[index].querySelectorAll('.more-info__button')
@@ -43,8 +48,7 @@ export const inSlidersInit = (extSlider, index) => {
                         insliderIsOn = false
                     }, 800)
                 }
-                slidersProgress = progress
-            },
+            }
         }
     })
     slider.disable()
