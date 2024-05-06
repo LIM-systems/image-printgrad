@@ -70,7 +70,7 @@ export const mainSliderInit = () => {
             resize: () => {
                 setScrollType(slider, wrapper)
                 if (window.innerWidth <= 850) {
-                    slidersToMobile(slider, subslider)
+                    slidersToMobile(slider)
                 }
             },
             progress: (slider, progress) => {

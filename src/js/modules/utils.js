@@ -4,6 +4,7 @@ import {
     footer, navMenu,
     inSlidersExs,
     moreInfoButtons,
+    inSliders,
 } from './common'
 import { inSlidersInit } from './insliders'
 
@@ -270,27 +271,9 @@ function toogleTransition(elem, data = false) {
 
 
 // переключение слайдеров на мобильный режим
-export const slidersToMobile = (slider, subslider) => {
-    // главный слайдер
-    const wrapper = document.querySelector('.wrapper')
-    wrapper.classList.add('wrapper_mobile')
-    slider.params.freeMode.enabled = true;
-
-
-
-    // сабслайдер
-    const subsliderEl = document.querySelector('.subslider')
-    subsliderEl.classList.add('subslider-mobile')
-    console.log('test')
-
-
-    // вложенные слайдеры
-    moreInfoButtons.forEach(item => {
-        item.style.display = 'none'
+export const slidersToMobile = (slider) => {
+    slider.params.freeMode.enabled = true
+    Array.from(inSliders).forEach(item => {
+        item.classList.add('hidden-inslider')
     })
-    inSlidersExs.forEach((item, i) => {
-        item.destroy()
-    })
-
-    // другие обработчики и скрипты
 }

@@ -7,7 +7,7 @@ export const inSlidersInit = (extSlider, index) => {
     const slider = new Swiper('.inslider_' + index, {
         wrapperClass: 'inslider__wrapper',
         slideClass: 'inslider__screen',
-        direction: 'vertical',
+        direction: 'horizontal',
         slidesPerView: 'auto',
         parallax: true,
         mousewheel: {

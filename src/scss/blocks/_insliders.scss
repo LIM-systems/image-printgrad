@@ -10,6 +10,10 @@
     z-index: 1500;
 }
 
+.inslider.hidden-inslider {
+    display: none;
+}
+
 .inslider__wrapper {
     display: flex;
     width: 100%;
@@ -144,6 +148,7 @@
     transition: transform 0.3s;
     pointer-events: none;
     overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .more-info__button._hide-more-info__button {
