@@ -1,7 +1,8 @@
 import {
     sliderBegin, navMenu, insliderIsOn,
     isSliderActive, isSliderUp, footer,
-    sliderElement, sliderProgress
+    sliderElement, sliderProgress,
+    mainMenu
 } from './common'
 
 export const subsliderInit = (extSlider, screen) => {
@@ -89,6 +90,13 @@ export const subsliderInit = (extSlider, screen) => {
             }
         }
 
+        // анимация снижения яркости главного верхнего меню
+        const mainMenuLinks = mainMenu.querySelectorAll('a')
+        subSliderProgress === 0 ?
+            Array.from(mainMenuLinks).forEach(item => item.classList.remove('main_menu_in-down')) :
+            Array.from(mainMenuLinks).forEach(item => item.classList.add('main_menu_in-down'))
+
+        // включение и отключение главного слайдера
         if (scrollHide >= sliderElem.offsetTop
             && !insliderIsOn
             && isSliderActive

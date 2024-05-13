@@ -8,6 +8,7 @@
     color: #fff;
     font-weight: 600;
     font-size: 25px;
+    margin-top: 10px;
 }
 
 // Мобильное меню
@@ -163,6 +164,18 @@
     padding: 40px 80px;
 }
 
+.footer_text-block {
+    color: #D6D4D4;
+}
+
+.footer_partners .footer_text-block p {
+    margin-bottom: 10px;
+}
+
+.footer_text-block p>a {
+    color: #D6D4D4;
+}
+
 .footer a {
     color: #fff;
 }
@@ -192,7 +205,7 @@
 }
 
 .subtitle-mini {
-    font-size: 30px !important;
+    font-size: 27px !important;
 }
 
 

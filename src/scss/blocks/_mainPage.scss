@@ -5,9 +5,8 @@
 }
 
 .logo a {
-    font-size: 26px;
+    font-size: 18px;
     font-weight: 700;
-    text-transform: uppercase;
     color: #000;
 }
 
@@ -15,14 +14,37 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    flex: 0.5;
+    position: fixed;
+    top: 45px;
+    right: 105px;
+    z-index: 1550;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s;
 }
 
+.main_menu._hide_main_menu {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+
 .main_menu a {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
-    text-transform: uppercase;
     color: #000;
+    transition: all 0.3s;
+}
+
+.main_menu a.main_menu_in-down {
+    color: #00000075;
+    transition: all 0.3s;
+}
+
+.main_menu a.main_menu_in-down:hover {
+    color: #000;
+    transition: all 0.3s;
 }
 
 .main_menu-burger {
@@ -54,7 +76,6 @@
 
 .geography-cities-wrapper {
     display: flex;
-    justify-content: center;
     flex: none;
     width: 300px;
     padding-top: 150px;
@@ -65,7 +86,7 @@
     height: 300px;
     overflow-y: scroll;
     direction: rtl;
-    padding: 15px;
+    padding: 0px 0px 0px 32px;
     width: 250px;
     /* Работает в Firefox */
     // scrollbar-width: thin;
@@ -96,8 +117,8 @@
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s;
-    text-transform: uppercase;
     text-align: left;
+    margin-bottom: 10px;
 }
 
 .geography-cities p:hover {

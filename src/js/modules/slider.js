@@ -1,4 +1,4 @@
-import { menuSlider, menuSliderRemove, menuLinks, inSliderBackButtonHandle } from './navMenu'
+import { menuSlider, menuSliderRemove, menuLinks, inSliderBackButtonHandle, nextSlideButtonsInit } from './navMenu'
 import {
     setScrollType, moreInfoHandle, scrollToggle,
     documentScroll, slidersToMobile
@@ -6,9 +6,10 @@ import {
 import { subsliderInit } from './subslider'
 import {
     sliderBegin, inSliders, moreInfoButtons,
-    inSlidersExs, sliderProgress
+    inSlidersExs, sliderProgress, mainMiniSwipers
 } from './common'
 import { inSlidersInit } from './insliders'
+import { mainMiniSwipersInit } from './mini-swipers'
 
 export const mainSliderInit = () => {
     const wrapper = document.querySelector('.wrapper')
@@ -35,6 +36,11 @@ export const mainSliderInit = () => {
                 setScrollType(slider, wrapper)
                 subslider = subsliderInit(slider, screens[0]) // активация вертикального первого подслайдера
                 inSliderBackButtonHandle(slider) // активация кнопки возврата для вложенных слайдеров
+                if (mainMiniSwipers) { // небольшие слайдеры с автопрокруткой
+                    Array.from(mainMiniSwipers).forEach(item =>
+                        mainMiniSwipersInit('.' + item.classList[1]))
+                }
+                nextSlideButtonsInit(slider) // активация кнопок "следующий слайд"
                 documentScroll(slider) // обработчик скролла на всю страницу
                 wrapper.classList.add('_loaded')
                 // активация вложенных горизонтальных подслайдеров

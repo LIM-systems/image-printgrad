@@ -1,6 +1,6 @@
 import {
     insliderIsOn, navBackButton, inSliders,
-    moreInfoButtons, slidersProgress
+    moreInfoButtons, slidersProgress, mainMenu
 } from './common'
 
 export const inSlidersInit = (extSlider, index) => {
@@ -33,6 +33,7 @@ export const inSlidersInit = (extSlider, index) => {
             scroll: (slider, e) => {
                 // отключем под слайдер и включаем главный слайдер
                 if (slidersProgress === 0 && insliderIsOn && e.deltaY < 0) {
+                    mainMenu.classList.remove('_hide_main_menu')
                     const wrapper = inSliders[index].querySelector('.inslider__wrapper')
                     const text = moreInfoButtons[index].querySelector('.more-info__title')
                     const circles = moreInfoButtons[index].querySelectorAll('.more-info__button')

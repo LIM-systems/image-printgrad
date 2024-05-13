@@ -4,7 +4,7 @@ import {
     footer, navMenu,
     inSlidersExs,
     moreInfoButtons,
-    inSliders,
+    inSliders, mainMenu
 } from './common'
 import { inSlidersInit } from './insliders'
 
@@ -94,6 +94,7 @@ export const moreInfoHandle = (data) => {
     // при клике на области подробнее отключаем главный слайдер
     // и включаем этот внутренний слайдер
     moreInfoButton.addEventListener('click', () => {
+        mainMenu.classList.add('_hide_main_menu')
         activeInslider = index
         insliderIsOn = true
         moreInfoButton.classList.add('more-info-hidden')

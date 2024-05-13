@@ -1,3 +1,4 @@
+// глобальное
 export const pagePath = window.location.pathname
 export let isMobile = false
 
@@ -25,10 +26,14 @@ export const toogleMobileMenu = () => {
     })
 }
 
+// главное верхнее меню
+export const mainMenu = document.querySelector('.main_menu')
+
 // все горизонтальные подслайдеры
 export const inSliders = document.querySelectorAll('.inslider')
 export let insliderIsOn = false
 export const inSlidersExs = []
+export const mainMiniSwipers = document.querySelectorAll('.mini-swiper')
 
 // все кнопки "подробнее"
 export const moreInfoButtons = document.querySelectorAll('.more-info')
@@ -56,6 +61,9 @@ export const navMenuHandle = () => {
 
 export const navBackButton = document.querySelector('.nav-back-button')
 export let activeInslider = 0
+
+// последние слайды для переходов дальше
+export const nextSlideButtons = document.querySelectorAll('.more-info-next__button')
 
 
 // футер
