@@ -142,7 +142,37 @@
     transition: all 0.3s;
 }
 
+//Мобильная версия
+.geography-wrapper-mobile {
+    padding-bottom: 80px;
+}
 
+.geography-wrapper-mobile>p {
+    padding: 16px;
+}
+
+.geography-map-mobile {
+    background: url('../../img/map/moscow.png');
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    height: 351px;
+}
+
+
+.geography-cities-wrapper-mobile {
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.geography-cities-wrapper-mobile p {
+    font-size: 18px;
+    color: #fff;
+
+}
 
 @media screen and (max-width: 850px) {
     .main_menu {
@@ -185,6 +215,29 @@
         background-color: #000;
         position: absolute;
         top: 230%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .geography-cities-wrapper-mobile p {
+        font-size: 14px;
+        color: #fff;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .geography-cities-wrapper-mobile {
+        max-width: 300px;
+        margin-top: 10px;
+    }
+
+    .geography-cities-wrapper-mobile p {
+        font-size: 14px;
+        color: #fff;
+    }
+
+    .geography-map-mobile {
+        height: 300px;
     }
 }
 

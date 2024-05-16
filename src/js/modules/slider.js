@@ -1,15 +1,24 @@
 import { menuSlider, menuSliderRemove, menuLinks, inSliderBackButtonHandle, nextSlideButtonsInit } from './navMenu'
 import {
     setScrollType, moreInfoHandle, scrollToggle,
-    documentScroll, slidersToMobile
+    documentScroll, slidersToMobile,
+    mobileMoreInfoHandler,
+    slidersToDesktop,
+    moreInfoMobileHandle,
+    mobileSlidesHandlers
 } from './/utils'
 import { subsliderInit } from './subslider'
 import {
     sliderBegin, inSliders, moreInfoButtons,
-    inSlidersExs, sliderProgress, mainMiniSwipers
+    inSlidersExs, sliderProgress, mainMiniSwipers,
+    mainMobileMiniSliders, sliderEx, parallaxAttributesData,
+    mobileInsliders,
+    mobileSlideState,
+    isMobile,
+    sliderElement
 } from './common'
 import { inSlidersInit } from './insliders'
-import { mainMiniSwipersInit } from './mini-swipers'
+import { mainMiniSwipersInit, mainMobileMiniSlidersInit } from './mini-swipers'
 
 export const mainSliderInit = () => {
     const wrapper = document.querySelector('.wrapper')
@@ -29,6 +38,7 @@ export const mainSliderInit = () => {
         observer: true,
         observeParents: true,
         observeSlideChildren: true,
+        updateOnWindowResize: true,
         init: false,
         on: {
             init: () => {
@@ -39,6 +49,10 @@ export const mainSliderInit = () => {
                 if (mainMiniSwipers) { // небольшие слайдеры с автопрокруткой
                     Array.from(mainMiniSwipers).forEach(item =>
                         mainMiniSwipersInit('.' + item.classList[1]))
+                }
+                if (mainMobileMiniSliders) { // небольшие слайдеры для мобильной версии
+                    Array.from(mainMobileMiniSliders).forEach(item =>
+                        mainMobileMiniSlidersInit('.' + item.classList[1]))
                 }
                 nextSlideButtonsInit(slider) // активация кнопок "следующий слайд"
                 documentScroll(slider) // обработчик скролла на всю страницу
@@ -58,26 +72,50 @@ export const mainSliderInit = () => {
 
                     }
                     moreInfoHandle(data)
+                    isMobile = true
                 })
-                scrollToggle(slider) // отключение скролла на городах на последнем слайде
+                // активация кнопок "подробнее" в мобильной версии
+                mobileMoreInfoHandler()
+                // отключение скролла на городах на последнем слайде
+                scrollToggle(slider)
+                slidersToMobile(slider)
+                //активация кнопок "подробнее" на подслайдах
+                //мобильная версия
+                Array.from(mobileInsliders).splice(0, mobileInsliders.length - 1).forEach((item, index) => {
+                    moreInfoMobileHandle(item, index, true)
+                })
             },
             slideChange: () => {
-                menuSliderRemove()
-                menuLinks[slider.realIndex].classList.add('_active')
-                //приводим в изначальный вид кнопки "подробнее"
-                Array.from(moreInfoButtons).forEach((item, i) => {
-                    const text = item.querySelector('.more-info__title')
-                    const circles = item.querySelectorAll('.more-info__button')
-                    text.classList.remove('_hide-more-info__title')
-                    circles[0].classList.remove('_hide-more-info__button')
-                    circles[1].classList.add('_hide-more-info__button')
-                })
+                console.log(isMobile)
+                if (!isMobile) {
+                    menuSliderRemove()
+                    menuLinks[slider.realIndex].classList.add('_active')
+                    //приводим в изначальный вид кнопки "подробнее"
+                    Array.from(moreInfoButtons).forEach((item, i) => {
+                        const text = item.querySelector('.more-info__title')
+                        const circles = item.querySelectorAll('.more-info__button')
+                        text.classList.remove('_hide-more-info__title')
+                        circles[0].classList.remove('_hide-more-info__button')
+                        circles[1].classList.add('_hide-more-info__button')
+                    })
+                }
             },
             resize: () => {
                 setScrollType(slider, wrapper)
                 if (window.innerWidth <= 850) {
-                    slidersToMobile(slider)
+                    isMobile = true
+                    let data = slidersToMobile(slider)
+                    if (!parallaxAttributesData) {
+                        parallaxAttributesData = data
+                    }
+                } else {
+                    isMobile = false
+                    slidersToDesktop(slider, parallaxAttributesData)
+                    parallaxAttributesData = false
                 }
+                Array.from(mobileInsliders).splice(0, mobileInsliders.length - 1).forEach((item, index) => {
+                    mobileSlidesHandlers(item, mobileSlideState[index], true)
+                })
             },
             progress: (slider, progress) => {
                 // записываем прогресс
@@ -111,5 +149,5 @@ export const mainSliderInit = () => {
         // }
     })
     slider.init()
-
+    sliderEx = slider
 }

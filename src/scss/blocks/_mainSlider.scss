@@ -51,6 +51,7 @@
   flex: 1 0 100%; // тут 100% должно быть
   position: relative;
   background-color: #4FA9B2;
+  overflow: visible;
 }
 
 .screen.geography-screen {
@@ -153,6 +154,13 @@
   color: #34EEFF;
   font-weight: 600;
   font-size: 25px;
+}
+
+
+@media screen and (max-width: 850px) {
+  .screen.geography-screen {
+    padding: 0px;
+  }
 }
 
 @media screen and (max-width: 450px) {

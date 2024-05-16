@@ -87,14 +87,75 @@
     .subslider_screen__content {
         padding: 45px 40px;
     }
+
+    .color-main-title {
+        font-size: 25px;
+        max-width: 380px;
+    }
 }
 
 @media screen and (max-width: 450px) {
     .subslider_screen__content {
         padding: 15px 15px;
     }
+}
 
+@media screen and (max-width: 420px) {
     .color-main-title {
-        font-size: 25px;
+        font-size: 20px;
+        max-width: 420px;
+    }
+}
+
+
+//мобильная версия
+.subslider-mobile {
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+    background: url('../../img/bg/bg-1-1.png');
+    background-size: 155%;
+    background-repeat: no-repeat;
+    background-position: 30% 32%;
+
+}
+
+.subslider-mobile__content:first-child {
+    padding: 45px 50px;
+    padding-bottom: 130px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.subslider-mobile__content:last-child {
+    background-color: #fff;
+    padding: 45px;
+}
+
+.subslider-mobile__content:last-child p {
+    position: inherit;
+    top: 0;
+    left: 0;
+    transform: none;
+    margin: 0 auto;
+}
+
+
+@media screen and (max-width: 500px) {
+    .subslider-mobile {
+        gap: 0px;
+    }
+
+    .subslider-mobile__content:first-child {
+        padding: 45px 20px;
+        padding-bottom: 130px;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .subslider-mobile {
+        background-position: 30% 42%;
     }
 }

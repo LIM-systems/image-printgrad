@@ -1,13 +1,15 @@
 import {
     sliderBegin, navMenu, insliderIsOn,
     isSliderActive, isSliderUp, footer,
-    sliderElement, sliderProgress,
-    mainMenu
+    sliderProgress,
+    mainMenu,
+    isMobile,
+    subsliderElem
 } from './common'
 
 export const subsliderInit = (extSlider, screen) => {
     const wrapper = document.querySelector('.wrapper')
-    const sliderElem = document.querySelector('.subslider')
+    if (!subsliderElem) return
     const scrollToggle = document.querySelector('.toggle-scroll')
     let subSliderProgress = 0
     const slider = new Swiper('.subslider', {
@@ -39,39 +41,40 @@ export const subsliderInit = (extSlider, screen) => {
     }, { passive: false })
     // поднятие и опускание сабслайдера при скролле вверх и вниз
     wrapper.addEventListener('wheel', e => {
+        if (isMobile) return
         // измеряем размер максимального сокрытия сабслайдера вверху
         let scrollHide = -((Math.round(window.innerHeight / 100) * 100) + 100) // насколько скрыть
         let scrollSpeed = -1 * (scrollHide / 7) // шаг пролистывания в пикселях(скорость)
 
         if (sliderBegin && !insliderIsOn) {
-            if (subSliderProgress === 1 && scrollHide < sliderElem.offsetTop && sliderElem.offsetTop <= 0 && e.deltaY > 0) {
+            if (subSliderProgress === 1 && scrollHide < subsliderElem.offsetTop && subsliderElem.offsetTop <= 0 && e.deltaY > 0) {
                 // если листаем вниз
                 // для плавного сокрытия слайдера наверх
                 let part5 = scrollHide / 7 * 4 // когда 5\7 слайдера ушло наверх
                 let part2 = scrollHide / 7 * 2 // когда 2\7 слайдера ушло наверх
-                if (sliderElem.offsetTop <= part5) {
-                    sliderElem.style.transition = 'all 0.5s'
-                    sliderElem.style.top = scrollHide + 'px'
+                if (subsliderElem.offsetTop <= part5) {
+                    subsliderElem.style.transition = 'all 0.5s'
+                    subsliderElem.style.top = scrollHide + 'px'
                     scrollToggle.style.transition = 'all 0.5s'
                     scrollToggle.style.top = scrollHide + 'px'
                     e.preventDefault()
                     return
-                } else if (sliderElem.offsetTop <= part2) {
+                } else if (subsliderElem.offsetTop <= part2) {
                     screen.classList.remove('_hide_page') // плавное появление элементов на первом слайде главного слайдера
-                    navMenu.classList.remove('_hide_menu') // плавное появление нав-меню
+                    if (isMobile) navMenu.classList.remove('_hide_menu') // плавное появление нав-меню
                 }
-                sliderElem.classList.remove('_suslider-top-0') // убираем класс плавного опускания слайдера
+                subsliderElem.classList.remove('_suslider-top-0') // убираем класс плавного опускания слайдера
                 scrollToggle.classList.remove('_suslider-top-0') // убираем класс плавного опускания слайдера
                 scrollToggle.style.display = 'block' // вешаем невидимый блок, чтобы слайдер не листался
-                sliderElem.style.top = sliderElem.offsetTop - scrollSpeed + 'px' // поднимаем слайдер вверх
+                subsliderElem.style.top = subsliderElem.offsetTop - scrollSpeed + 'px' // поднимаем слайдер вверх
                 scrollToggle.style.top = scrollToggle.offsetTop - scrollSpeed + 'px' // следом поднимаем блокирующий блок
-            } else if (subSliderProgress === 1 && sliderElem.offsetTop <= -scrollSpeed && e.deltaY < 0) {
+            } else if (subSliderProgress === 1 && subsliderElem.offsetTop <= -scrollSpeed && e.deltaY < 0) {
                 // если листаем вверх
-                if (-scrollSpeed * 2 <= sliderElem.offsetTop && sliderElem.offsetTop <= -scrollSpeed) {
+                if (-scrollSpeed * 2 <= subsliderElem.offsetTop && subsliderElem.offsetTop <= -scrollSpeed) {
                     // если слайдер почти весь опущен
-                    sliderElem.style.top = '0px' // опускаем слайдер до конца
+                    subsliderElem.style.top = '0px' // опускаем слайдер до конца
                     scrollToggle.style.top = '0px' // опускаем блокирующий блок
-                    sliderElem.classList.add('_suslider-top-0') // добавляем класс плавного опускания слайдера
+                    subsliderElem.classList.add('_suslider-top-0') // добавляем класс плавного опускания слайдера
                     scrollToggle.classList.add('_suslider-top-0')// добавляем класс плавного опускания слайдера
                     setTimeout(() => {
                         scrollToggle.style.display = 'none' // убираем див, блокирующий скролл слайдера
@@ -81,11 +84,11 @@ export const subsliderInit = (extSlider, screen) => {
                         return
                     }, 500)
                 } else {
-                    sliderElem.style.transition = 'none'
+                    subsliderElem.style.transition = 'none'
                     scrollToggle.style.transition = 'none'
                     scrollToggle.style.display = 'block'
                 }
-                sliderElem.style.top = sliderElem.offsetTop + scrollSpeed + 'px' // опускаем слайдер вниз
+                subsliderElem.style.top = subsliderElem.offsetTop + scrollSpeed + 'px' // опускаем слайдер вниз
                 scrollToggle.style.top = scrollToggle.offsetTop + scrollSpeed + 'px' // опускаем блокирующий блок
             }
         }
@@ -97,7 +100,7 @@ export const subsliderInit = (extSlider, screen) => {
             Array.from(mainMenuLinks).forEach(item => item.classList.add('main_menu_in-down'))
 
         // включение и отключение главного слайдера
-        if (scrollHide >= sliderElem.offsetTop
+        if (scrollHide >= subsliderElem.offsetTop
             && !insliderIsOn
             && isSliderActive
             && !isSliderUp

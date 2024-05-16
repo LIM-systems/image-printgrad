@@ -4,11 +4,15 @@ export let isMobile = false
 
 // главный слайдер
 export const sliderElement = document.querySelector('.page')
+export const mainSlides = document.querySelectorAll('.screen')
+export let sliderEx = null
 export let sliderProgress = 0
 export let isSliderActive = true
 export let isSliderUp = false
+export let parallaxAttributesData = false
 
 // конец подслайдера на главной странице
+export const subsliderElem = document.querySelector('.subslider')
 export let sliderBegin = true
 
 // скрытие/открытие мобильного меню
@@ -34,6 +38,7 @@ export const inSliders = document.querySelectorAll('.inslider')
 export let insliderIsOn = false
 export const inSlidersExs = []
 export const mainMiniSwipers = document.querySelectorAll('.mini-swiper')
+export const mainMobileMiniSliders = document.querySelectorAll('.mobile_mini_slider')
 
 // все кнопки "подробнее"
 export const moreInfoButtons = document.querySelectorAll('.more-info')
@@ -68,3 +73,17 @@ export const nextSlideButtons = document.querySelectorAll('.more-info-next__butt
 
 // футер
 export const footer = document.querySelector('.footer')
+
+
+
+// мобильная версия
+// сабслайдер
+export const mobileSubsliderElem = document.querySelector('.subslider-mobile')
+
+
+// все инслайдеры
+export const mobileInsliders = document.querySelectorAll('.mobile-inslider')
+export const mobileSlideState = Array.from(mobileInsliders).map(() => false)
+
+// кнопки показа доп.информации
+export const mobileMoreInfoButtons = document.querySelectorAll('.more_info_mobile')

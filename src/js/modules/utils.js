@@ -4,7 +4,13 @@ import {
     footer, navMenu,
     inSlidersExs,
     moreInfoButtons,
-    inSliders, mainMenu
+    inSliders, mainMenu, mobileMoreInfoButtons, sliderEx,
+    mobileInsliders,
+    mobileSlideSizes,
+    mainSlides,
+    mobileSlideState,
+    mobileSubsliderElem,
+    subsliderElem
 } from './common'
 import { inSlidersInit } from './insliders'
 
@@ -119,6 +125,43 @@ export const moreInfoHandle = (data) => {
     })
 }
 
+// взаимодействие с кнопкой "подробнее" и управление слайдерами
+//мобильная версия
+export const mobileSlidesHandlers = (slider, isOpen, isResize = false) => {
+    isMobile
+        ? Array.from(mainSlides).forEach(item => item.style.flex = '1 0 20%')
+        : Array.from(mainSlides).forEach(item => item.style.flex = '1 0 100%')
+
+    const firstSlideHeight = slider.querySelector('.mobile-inslider_all_1').clientHeight
+    const slides = slider.querySelectorAll('.mobile-inslider-slide')
+    let slidesHeight = 0
+    slides.forEach(item => {
+        slidesHeight += item.clientHeight
+    })
+    if (!isResize) {
+        slider.style.transition = 'all 0.5s'
+        setTimeout(() => {
+            slider.style.transition = 'none'
+        }, 500)
+    }
+    isOpen
+        ? slider.style.height = `${firstSlideHeight + slidesHeight}px`
+        : slider.style.height = `${firstSlideHeight}px`
+    console.log(firstSlideHeight)
+}
+
+export const moreInfoMobileHandle = (slider, index, init = false) => {
+
+    if (init) mobileSlidesHandlers(slider, mobileSlideState[index])
+
+    const button = Array.from(mobileMoreInfoButtons)[index]
+
+    button.addEventListener('click', () => {
+        mobileSlideState[index] = !mobileSlideState[index]
+        mobileSlidesHandlers(slider, mobileSlideState[index])
+    })
+
+}
 
 
 // отключаем скролл главного слайдер, 
@@ -184,6 +227,7 @@ export const documentScroll = (slider) => {
 window.addEventListener('load', () => {
     // мобильный экран или нет
     window.innerWidth <= 850 ? isMobile = true : isMobile = false
+
 
     // печатание и стирание текста
     setTimeout(() => {
@@ -271,10 +315,84 @@ function toogleTransition(elem, data = false) {
 }
 
 
+// удаление паралакс свойств для мобильной версии
+export const toogleParallaxInMobile = (elem, data = null) => {
+    const allElements = elem.querySelectorAll('*');
+    const returnData = []
+    if (data === null) {
+        allElements.forEach(element => {
+            const attributes = element.attributes;
+            const attributesArr = []
+            for (let i = 0; i < attributes.length; i++) {
+                if (attributes[i].name.startsWith('data-swiper-parallax')) {
+                    attributesArr.push({
+                        name: attributes[i].name,
+                        value: attributes[i].value
+                    })
+                    element.removeAttribute(attributes[i].name)
+                    element.style.opacity = '1'
+                    element.style.transform = 'translate3d(0px, 0%, 0px)'
+                }
+            }
+            if (attributesArr.length > 0) {
+                returnData.push({
+                    element: element,
+                    attributes: attributesArr
+                })
+            }
+        });
+        return returnData
+    } else if (data) {
+        data.forEach(item => {
+            item.attributes.forEach(atr => {
+                item.element.setAttribute(atr.name, atr.value)
+            })
+        });
+    }
+}
+
+
 // переключение слайдеров на мобильный режим
 export const slidersToMobile = (slider) => {
+    navMenu.classList.add('_hide_menu')
+    subsliderElem.style.display = 'none'
+    mobileSubsliderElem.style.display = 'flex'
     slider.params.freeMode.enabled = true
+    slider.params.parallax.enabled = false
+    const data = toogleParallaxInMobile(sliderElement)
     Array.from(inSliders).forEach(item => {
         item.classList.add('hidden-inslider')
     })
+    Array.from(mobileInsliders).forEach(item => {
+        item.classList.remove('hidden-mobile-inslider')
+    })
+    return data
+}
+
+export const slidersToDesktop = (slider, data) => {
+    navMenu.classList.remove('_hide_menu')
+    subsliderElem.style.display = 'block'
+    mobileSubsliderElem.style.display = 'none'
+    slider.params.freeMode.enabled = false
+    slider.params.parallax.enabled = true
+    toogleParallaxInMobile(sliderElement, data)
+    Array.from(inSliders).forEach(item => {
+        item.classList.remove('hidden-inslider')
+    })
+    Array.from(mobileInsliders).forEach(item => {
+        item.classList.add('hidden-mobile-inslider')
+    })
+}
+
+
+// мобильная версия
+
+// анимация кнопки подробнее
+export const mobileMoreInfoHandler = () => {
+    Array.from(mobileMoreInfoButtons).forEach(item =>
+        item.addEventListener('click', () => {
+            let lines = item.querySelector('.more_info_mobile_button').querySelectorAll('div')
+            lines[0].classList.toggle('_active-more_info_mobile')
+            lines[1].classList.toggle('_active-more_info_mobile')
+        }))
 }

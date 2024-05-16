@@ -14,3 +14,11 @@ export const mainMiniSwipersInit = (className) => {
         loop: true,
     })
 }
+
+export const mainMobileMiniSlidersInit = (className) => {
+    const slider = new Swiper(className, {
+        direction: 'horizontal',
+        slidesPerView: 'auto',
+        speed: 900,
+    })
+}

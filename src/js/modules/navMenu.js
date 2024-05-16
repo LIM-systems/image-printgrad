@@ -24,6 +24,7 @@ export const menuSlider = (slider) => {
             const menuLink = menuLinks[i]
             menuLink.addEventListener('click', e => {
                 e.preventDefault()
+                mainMenu.classList.remove('_hide_main_menu')
                 if (!slider.enabled) {
                     const data = toogleParallax(inSliders[activeInslider])
                     slidersProgress = 0

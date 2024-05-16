@@ -15,6 +15,7 @@ const changed = require('gulp-changed');
 const typograf = require('gulp-typograf');
 const svgsprite = require('gulp-svg-sprite');
 const replace = require('gulp-replace');
+const browserSync = require('browser-sync').create();
 
 gulp.task('clean:dev', function (done) {
 	if (fs.existsSync('./build/')) {
@@ -174,7 +175,14 @@ const serverOptions = {
 };
 
 gulp.task('server:dev', function () {
-	return gulp.src('./build/').pipe(server(serverOptions));
+	browserSync.init({
+		server: {
+			baseDir: "./build" // Замените на корневую директорию вашего проекта
+		},
+		host: '192.168.31.24', // Укажите здесь нужный IP-адрес
+		port: 3000, // Можете изменить порт, если требуется
+	});
+	// return gulp.src('./build/').pipe(server(serverOptions));
 });
 
 gulp.task('watch:dev', function () {
