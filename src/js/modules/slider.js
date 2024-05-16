@@ -5,7 +5,8 @@ import {
     mobileMoreInfoHandler,
     slidersToDesktop,
     moreInfoMobileHandle,
-    mobileSlidesHandlers
+    mobileSlidesHandlers,
+    wrapperScrollHandler
 } from './/utils'
 import { subsliderInit } from './subslider'
 import {
@@ -15,13 +16,14 @@ import {
     mobileInsliders,
     mobileSlideState,
     isMobile,
-    sliderElement
+    sliderElement,
+    wrapper,
+    wrapperScrollListenerToggle
 } from './common'
 import { inSlidersInit } from './insliders'
 import { mainMiniSwipersInit, mainMobileMiniSlidersInit } from './mini-swipers'
 
 export const mainSliderInit = () => {
-    const wrapper = document.querySelector('.wrapper')
     const screens = document.querySelectorAll('.screen__content')
     let subslider = null
     const slider = new Swiper('.page', {
@@ -42,9 +44,10 @@ export const mainSliderInit = () => {
         init: false,
         on: {
             init: () => {
+                window.innerWidth <= 850 ? isMobile = true : isMobile = false
                 menuSlider(slider)
                 setScrollType(slider, wrapper)
-                subslider = subsliderInit(slider, screens[0]) // активация вертикального первого подслайдера
+                subslider = subsliderInit() // активация вертикального первого подслайдера
                 inSliderBackButtonHandle(slider) // активация кнопки возврата для вложенных слайдеров
                 if (mainMiniSwipers) { // небольшие слайдеры с автопрокруткой
                     Array.from(mainMiniSwipers).forEach(item =>
@@ -72,13 +75,18 @@ export const mainSliderInit = () => {
 
                     }
                     moreInfoHandle(data)
-                    isMobile = true
+                    // isMobile = true
                 })
                 // активация кнопок "подробнее" в мобильной версии
                 mobileMoreInfoHandler()
                 // отключение скролла на городах на последнем слайде
                 scrollToggle(slider)
-                slidersToMobile(slider)
+                if (isMobile) {
+                    slidersToMobile(slider)
+                } else {
+                    slidersToDesktop(slider, parallaxAttributesData)
+                    wrapper.addEventListener('wheel', wrapperScrollHandler, { passive: false })
+                }
                 //активация кнопок "подробнее" на подслайдах
                 //мобильная версия
                 Array.from(mobileInsliders).splice(0, mobileInsliders.length - 1).forEach((item, index) => {
@@ -86,7 +94,6 @@ export const mainSliderInit = () => {
                 })
             },
             slideChange: () => {
-                console.log(isMobile)
                 if (!isMobile) {
                     menuSliderRemove()
                     menuLinks[slider.realIndex].classList.add('_active')
@@ -107,11 +114,14 @@ export const mainSliderInit = () => {
                     let data = slidersToMobile(slider)
                     if (!parallaxAttributesData) {
                         parallaxAttributesData = data
+                        wrapper.removeEventListener('wheel', wrapperScrollHandler, { passive: false })
+                        slider.enable()
                     }
                 } else {
                     isMobile = false
                     slidersToDesktop(slider, parallaxAttributesData)
                     parallaxAttributesData = false
+                    wrapper.addEventListener('wheel', wrapperScrollHandler, { passive: false })
                 }
                 Array.from(mobileInsliders).splice(0, mobileInsliders.length - 1).forEach((item, index) => {
                     mobileSlidesHandlers(item, mobileSlideState[index], true)
@@ -148,6 +158,7 @@ export const mainSliderInit = () => {
         //     draggable: true,
         // }
     })
+
     slider.init()
     sliderEx = slider
 }

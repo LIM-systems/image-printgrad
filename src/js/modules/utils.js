@@ -10,7 +10,14 @@ import {
     mainSlides,
     mobileSlideState,
     mobileSubsliderElem,
-    subsliderElem
+    subsliderElem,
+    mobileSubliderHTML,
+    sliderWrapper,
+    sliderBegin,
+    subSliderProgress,
+    scrollToggleBlock,
+    screens,
+    toogleMobileMenu
 } from './common'
 import { inSlidersInit } from './insliders'
 
@@ -31,6 +38,77 @@ export const setScrollType = (slider, wrapper) => {
                 break
             }
         }
+    }
+}
+
+// поднятие и опускание сабслайдера при скролле вверх и вниз
+export const wrapperScrollHandler = e => {
+    // измеряем размер максимального сокрытия сабслайдера вверху
+    let scrollHide = -((Math.round(window.innerHeight / 100) * 100) + 100) // насколько скрыть
+    let scrollSpeed = -1 * (scrollHide / 7) // шаг пролистывания в пикселях(скорость)
+
+    if (sliderBegin && !insliderIsOn) {
+        if (subSliderProgress === 1 && scrollHide < subsliderElem.offsetTop && subsliderElem.offsetTop <= 0 && e.deltaY > 0) {
+            // если листаем вниз
+            // для плавного сокрытия слайдера наверх
+            let part5 = scrollHide / 7 * 4 // когда 5\7 слайдера ушло наверх
+            let part2 = scrollHide / 7 * 2 // когда 2\7 слайдера ушло наверх
+            if (subsliderElem.offsetTop <= part5) {
+                subsliderElem.style.transition = 'all 0.5s'
+                subsliderElem.style.top = scrollHide + 'px'
+                scrollToggleBlock.style.transition = 'all 0.5s'
+                scrollToggleBlock.style.top = scrollHide + 'px'
+                screens[1].classList.remove('_hide_page') // плавное появление элементов на первом слайде главного слайдера
+                if (isMobile) navMenu.classList.remove('_hide_menu') // плавное появление нав-меню
+                e.preventDefault()
+                return
+            }
+            subsliderElem.classList.remove('_suslider-top-0') // убираем класс плавного опускания слайдера
+            scrollToggleBlock.classList.remove('_suslider-top-0') // убираем класс плавного опускания слайдера
+            scrollToggleBlock.style.display = 'block' // вешаем невидимый блок, чтобы слайдер не листался
+            subsliderElem.style.top = subsliderElem.offsetTop - scrollSpeed + 'px' // поднимаем слайдер вверх
+            scrollToggleBlock.style.top = scrollToggleBlock.offsetTop - scrollSpeed + 'px' // следом поднимаем блокирующий блок
+        } else if (subSliderProgress === 1 && subsliderElem.offsetTop <= -scrollSpeed && e.deltaY < 0) {
+            // если листаем вверх
+            if (-scrollSpeed * 2 <= subsliderElem.offsetTop && subsliderElem.offsetTop <= -scrollSpeed) {
+                // если слайдер почти весь опущен
+                subsliderElem.style.top = '0px' // опускаем слайдер до конца
+                scrollToggleBlock.style.top = '0px' // опускаем блокирующий блок
+                subsliderElem.classList.add('_suslider-top-0') // добавляем класс плавного опускания слайдера
+                scrollToggleBlock.classList.add('_suslider-top-0')// добавляем класс плавного опускания слайдера
+                setTimeout(() => {
+                    scrollToggleBlock.style.display = 'none' // убираем див, блокирующий скролл слайдера
+                    screen.classList.add('_hide_page') // плавное исчезание элементов на первом слайде главного слайдера
+                    navMenu.classList.add('_hide_menu') // плавное исчезание нав-меню
+                    e.preventDefault()
+                    return
+                }, 500)
+            } else {
+                subsliderElem.style.transition = 'none'
+                scrollToggleBlock.style.transition = 'none'
+                scrollToggleBlock.style.display = 'block'
+            }
+            subsliderElem.style.top = subsliderElem.offsetTop + scrollSpeed + 'px' // опускаем слайдер вниз
+            scrollToggleBlock.style.top = scrollToggleBlock.offsetTop + scrollSpeed + 'px' // опускаем блокирующий блок
+        }
+    }
+
+    // анимация снижения яркости главного верхнего меню
+    const mainMenuLinks = mainMenu.querySelectorAll('a')
+    subSliderProgress === 0 ?
+        Array.from(mainMenuLinks).forEach(item => item.classList.remove('main_menu_in-down')) :
+        Array.from(mainMenuLinks).forEach(item => item.classList.add('main_menu_in-down'))
+
+    // включение и отключение главного слайдера
+    if (scrollHide >= subsliderElem.offsetTop
+        && !insliderIsOn
+        && isSliderActive
+        && !isSliderUp
+        || isMobile
+    ) {
+        sliderEx.enable()
+    } else {
+        sliderEx.disable()
     }
 }
 
@@ -147,7 +225,6 @@ export const mobileSlidesHandlers = (slider, isOpen, isResize = false) => {
     isOpen
         ? slider.style.height = `${firstSlideHeight + slidesHeight}px`
         : slider.style.height = `${firstSlideHeight}px`
-    console.log(firstSlideHeight)
 }
 
 export const moreInfoMobileHandle = (slider, index, init = false) => {
@@ -225,9 +302,6 @@ export const documentScroll = (slider) => {
 
 
 window.addEventListener('load', () => {
-    // мобильный экран или нет
-    window.innerWidth <= 850 ? isMobile = true : isMobile = false
-
 
     // печатание и стирание текста
     setTimeout(() => {
@@ -356,7 +430,16 @@ export const toogleParallaxInMobile = (elem, data = null) => {
 export const slidersToMobile = (slider) => {
     navMenu.classList.add('_hide_menu')
     subsliderElem.style.display = 'none'
-    mobileSubsliderElem.style.display = 'flex'
+    if (mobileSubliderHTML !== undefined) {
+        const nullSlide = document.createElement('div')
+        nullSlide.classList.add(mobileSubliderHTML.classes[0], mobileSubliderHTML.classes[1])
+        nullSlide.innerHTML = mobileSubliderHTML.innerHTML
+        sliderWrapper.prepend(nullSlide)
+        mainSlides = Array.from(mainSlides);
+        mainSlides.unshift(nullSlide);
+        mobileSubliderHTML = undefined
+        toogleMobileMenu(true)
+    }
     slider.params.freeMode.enabled = true
     slider.params.parallax.enabled = false
     const data = toogleParallaxInMobile(sliderElement)
@@ -372,7 +455,14 @@ export const slidersToMobile = (slider) => {
 export const slidersToDesktop = (slider, data) => {
     navMenu.classList.remove('_hide_menu')
     subsliderElem.style.display = 'block'
-    mobileSubsliderElem.style.display = 'none'
+    if (mobileSubliderHTML === undefined) {
+        mobileSubliderHTML = {
+            innerHTML: mainSlides[0].innerHTML,
+            classes: mainSlides[0].classList
+        }
+        mainSlides[0].remove()
+        mainSlides = Array.from(mainSlides).slice(1)
+    }
     slider.params.freeMode.enabled = false
     slider.params.parallax.enabled = true
     toogleParallaxInMobile(sliderElement, data)

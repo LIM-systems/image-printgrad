@@ -1,10 +1,15 @@
 // глобальное
 export const pagePath = window.location.pathname
-export let isMobile = false
+export let isMobile
+export const wrapper = document.querySelector('.wrapper')
+export let wrapperScrollListenerToggle = false
+export const scrollToggleBlock = document.querySelector('.toggle-scroll')
 
 // главный слайдер
 export const sliderElement = document.querySelector('.page')
-export const mainSlides = document.querySelectorAll('.screen')
+export let mainSlides = document.querySelectorAll('.screen')
+export const sliderWrapper = sliderElement.querySelector('.page__wrapper')
+export const screens = document.querySelectorAll('.screen__content')
 export let sliderEx = null
 export let sliderProgress = 0
 export let isSliderActive = true
@@ -14,20 +19,24 @@ export let parallaxAttributesData = false
 // конец подслайдера на главной странице
 export const subsliderElem = document.querySelector('.subslider')
 export let sliderBegin = true
+export let subSliderProgress = 0
 
 // скрытие/открытие мобильного меню
-export const toogleMobileMenu = () => {
+export const toogleMobileMenu = (repeat = false) => {
     const mobileMenu = document.querySelector('.mobile_main_menu')
     const mobileMenuOpen = document.querySelector('.main_menu-burger')
     const mobileMenuClose = document.querySelector('.main_menu-burger-close')
-
-    mobileMenuOpen.addEventListener('click', () => {
-        mobileMenu.classList.remove('_hide_mobile_menu')
-    })
-
-    mobileMenuClose.addEventListener('click', () => {
-        mobileMenu.classList.add('_hide_mobile_menu')
-    })
+    if (mobileMenuOpen) {
+        mobileMenuOpen.addEventListener('click', () => {
+            mobileMenu.classList.remove('_hide_mobile_menu')
+        })
+        if (!repeat) {
+            mobileMenuClose.addEventListener('click', () => {
+                console.log('2')
+                mobileMenu.classList.add('_hide_mobile_menu')
+            })
+        }
+    }
 }
 
 // главное верхнее меню
@@ -79,6 +88,7 @@ export const footer = document.querySelector('.footer')
 // мобильная версия
 // сабслайдер
 export const mobileSubsliderElem = document.querySelector('.subslider-mobile')
+export let mobileSubliderHTML;
 
 
 // все инслайдеры

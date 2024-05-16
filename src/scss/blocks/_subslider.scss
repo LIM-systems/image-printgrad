@@ -110,7 +110,7 @@
 
 //мобильная версия
 .subslider-mobile {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 30px;
     background: url('../../img/bg/bg-1-1.png');
