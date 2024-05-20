@@ -10,6 +10,7 @@ import {
     subSliderProgress,
     scrollToggleBlock
 } from './common'
+import { textAnimationInit } from './utils'
 
 export const subsliderInit = () => {
     const slider = new Swiper('.subslider', {

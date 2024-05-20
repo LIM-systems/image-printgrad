@@ -152,11 +152,11 @@
 }
 
 .geography-map-mobile {
-    background: url('../../img/map/moscow.png');
+    background: url('../../img/map/mobile_all.png');
     background-size: contain;
     background-position: right;
     background-repeat: no-repeat;
-    height: 351px;
+    height: 760px;
 }
 
 
@@ -223,6 +223,10 @@
         font-size: 14px;
         color: #fff;
     }
+
+    .geography-map-mobile {
+        height: 540px;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -237,7 +241,7 @@
     }
 
     .geography-map-mobile {
-        height: 300px;
+        height: 444px;
     }
 }
 

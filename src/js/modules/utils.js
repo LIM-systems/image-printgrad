@@ -17,7 +17,12 @@ import {
     subSliderProgress,
     scrollToggleBlock,
     screens,
-    toogleMobileMenu
+    toogleMobileMenu,
+    transformValue,
+    initTransformValue,
+    mobileFooterHTML,
+    sliderProgress,
+    footers
 } from './common'
 import { inSlidersInit } from './insliders'
 
@@ -68,7 +73,12 @@ export const wrapperScrollHandler = e => {
             scrollToggleBlock.style.display = 'block' // вешаем невидимый блок, чтобы слайдер не листался
             subsliderElem.style.top = subsliderElem.offsetTop - scrollSpeed + 'px' // поднимаем слайдер вверх
             scrollToggleBlock.style.top = scrollToggleBlock.offsetTop - scrollSpeed + 'px' // следом поднимаем блокирующий блок
-        } else if (subSliderProgress === 1 && subsliderElem.offsetTop <= -scrollSpeed && e.deltaY < 0) {
+        } else if (subSliderProgress === 1
+            && subsliderElem.offsetTop <= -scrollSpeed
+            && e.deltaY < 0
+            && sliderProgress === 0) {
+            console.log(subsliderElem.offsetTop)
+            console.log(-scrollSpeed)
             // если листаем вверх
             if (-scrollSpeed * 2 <= subsliderElem.offsetTop && subsliderElem.offsetTop <= -scrollSpeed) {
                 // если слайдер почти весь опущен
@@ -78,7 +88,7 @@ export const wrapperScrollHandler = e => {
                 scrollToggleBlock.classList.add('_suslider-top-0')// добавляем класс плавного опускания слайдера
                 setTimeout(() => {
                     scrollToggleBlock.style.display = 'none' // убираем див, блокирующий скролл слайдера
-                    screen.classList.add('_hide_page') // плавное исчезание элементов на первом слайде главного слайдера
+                    screens[1].classList.add('_hide_page') // плавное исчезание элементов на первом слайде главного слайдера
                     navMenu.classList.add('_hide_menu') // плавное исчезание нав-меню
                     e.preventDefault()
                     return
@@ -205,37 +215,47 @@ export const moreInfoHandle = (data) => {
 
 // взаимодействие с кнопкой "подробнее" и управление слайдерами
 //мобильная версия
-export const mobileSlidesHandlers = (slider, isOpen, isResize = false) => {
+export const mobileSlidesHandlers = (slider, index, isResize = false, init = false) => {
+    let isOpen = mobileSlideState[index]
     isMobile
         ? Array.from(mainSlides).forEach(item => item.style.flex = '1 0 20%')
         : Array.from(mainSlides).forEach(item => item.style.flex = '1 0 100%')
 
-    const firstSlideHeight = slider.querySelector('.mobile-inslider_all_1').clientHeight
+    const firstSlideHeight = slider.querySelector('.mobile-inslider_all_1')?.clientHeight
     const slides = slider.querySelectorAll('.mobile-inslider-slide')
     let slidesHeight = 0
     slides.forEach(item => {
         slidesHeight += item.clientHeight
     })
+
+    if (isOpen) {
+        slider.style.height = `${firstSlideHeight + slidesHeight}px`
+    } else {
+        slider.style.height = `${firstSlideHeight}px`
+    }
+
     if (!isResize) {
         slider.style.transition = 'all 0.5s'
         setTimeout(() => {
             slider.style.transition = 'none'
         }, 500)
     }
-    isOpen
-        ? slider.style.height = `${firstSlideHeight + slidesHeight}px`
-        : slider.style.height = `${firstSlideHeight}px`
+
 }
 
 export const moreInfoMobileHandle = (slider, index, init = false) => {
 
-    if (init) mobileSlidesHandlers(slider, mobileSlideState[index])
+    if (init) {
+        mobileSlidesHandlers(slider, index, false, init)
+    }
 
     const button = Array.from(mobileMoreInfoButtons)[index]
-
-    button.addEventListener('click', () => {
+    button?.addEventListener('click', () => {
+        let lines = button.querySelector('.more_info_mobile_button').querySelectorAll('div')
+        lines[0].classList.toggle('_active-more_info_mobile')
+        lines[1].classList.toggle('_active-more_info_mobile')
         mobileSlideState[index] = !mobileSlideState[index]
-        mobileSlidesHandlers(slider, mobileSlideState[index])
+        mobileSlidesHandlers(slider, index)
     })
 
 }
@@ -268,34 +288,37 @@ export const documentScroll = (slider) => {
     document.addEventListener('wheel', e => {
         const lastContent = sliderElement.querySelectorAll('.screen__content')[slider.slides.length - 1]
         const lastScreen = sliderElement.querySelectorAll('.screen')[slider.slides.length - 1]
-        const isEnd = lastContent.getBoundingClientRect().bottom
-            <= window.innerHeight
+        // const isEnd = lastContent.getBoundingClientRect().bottom
+        //     <= window.innerHeight
 
-        if (e.deltaY > 0 && isEnd && isSliderActive) {
-            // крутим вниз
-            navMenu.classList.add('_hide_menu')
-            isSliderUp = true
-            slider.disable()
-            let lastScreenSurplus = lastScreen.clientHeight - sliderElement.clientHeight
-            const upValue = lastScreen.clientHeight - window.innerHeight + footer.clientHeight - lastScreenSurplus
-            lastScreen.style.top = -lastScreenSurplus + 'px'
-            sliderElement.style.overflow = 'visible'
-            sliderElement.style.top = -upValue + 'px'
-        } else if (e.deltaY < 0 && isEnd && isSliderActive) {
-            // крутим вверх
-            sliderElement.style.top = 0 + 'px'
-            navMenu.classList.remove('_hide_menu')
-            setTimeout(() => {
-                sliderElement.style.overflow = 'hidden'
-                isSliderUp = false
-                slider.enable()
-            }, 500)
-        }
-        if (slider.realIndex === slider.slides.length - 2) {
-            lastScreen.style.transition = 'all 0.3s'
-            lastScreen.style.top = 0 + 'px'
-        } else {
-            lastScreen.style.transition = 'none'
+        if (!isMobile) {
+            if (e.deltaY > 0 && sliderProgress >= 1 && isSliderActive) {
+                // крутим вниз
+                navMenu.classList.add('_hide_menu')
+                isSliderUp = true
+                slider.disable()
+                let lastScreenSurplus = lastScreen.clientHeight - sliderElement.clientHeight
+                const upValue = lastScreen.clientHeight - window.innerHeight + footers[1].clientHeight - lastScreenSurplus
+                console.log(footers[1].clientHeight)
+                lastScreen.style.top = -lastScreenSurplus + 'px'
+                sliderElement.style.overflow = 'visible'
+                sliderElement.style.top = -upValue + 'px'
+            } else if (e.deltaY < 0 && sliderProgress >= 1 && isSliderActive) {
+                // крутим вверх
+                sliderElement.style.top = 0 + 'px'
+                navMenu.classList.remove('_hide_menu')
+                setTimeout(() => {
+                    sliderElement.style.overflow = 'hidden'
+                    isSliderUp = false
+                    slider.enable()
+                }, 500)
+            }
+            if (slider.realIndex === slider.slides.length - 2) {
+                lastScreen.style.transition = 'all 0.3s'
+                lastScreen.style.top = 0 + 'px'
+            } else {
+                lastScreen.style.transition = 'none'
+            }
         }
     })
 }
@@ -316,6 +339,16 @@ window.addEventListener('load', () => {
 
     setTimeout(() => {
         const typed = new Typed('.typed-text-2', {
+            strings: ['удобно', 'легко',
+                'надежно', 'выгодно'],
+            typeSpeed: 80,
+            backSpeed: 50,
+            loop: true
+        })
+    }, 300)
+
+    setTimeout(() => {
+        const typed = new Typed('.typed-text-2-mobile', {
             strings: ['удобно', 'легко',
                 'надежно', 'выгодно'],
             typeSpeed: 80,
@@ -438,6 +471,18 @@ export const slidersToMobile = (slider) => {
         mainSlides = Array.from(mainSlides);
         mainSlides.unshift(nullSlide);
         mobileSubliderHTML = undefined
+
+        const lastSlide = document.createElement('div')
+        lastSlide.classList.add(mobileFooterHTML.classes[0],
+            mobileFooterHTML.classes[1],
+            mobileFooterHTML.classes[2]
+        )
+        lastSlide.innerHTML = mobileFooterHTML.innerHTML
+        sliderWrapper.appendChild(lastSlide)
+        mainSlides = Array.from(mainSlides);
+        mainSlides.push(lastSlide);
+        mobileFooterHTML = undefined
+
         toogleMobileMenu(true)
     }
     slider.params.freeMode.enabled = true
@@ -454,14 +499,26 @@ export const slidersToMobile = (slider) => {
 
 export const slidersToDesktop = (slider, data) => {
     navMenu.classList.remove('_hide_menu')
+
+    // прячем мобильный сабслайдер
     subsliderElem.style.display = 'block'
     if (mobileSubliderHTML === undefined) {
+        sliderBegin = true
         mobileSubliderHTML = {
             innerHTML: mainSlides[0].innerHTML,
             classes: mainSlides[0].classList
         }
         mainSlides[0].remove()
-        mainSlides = Array.from(mainSlides).slice(1)
+
+        // прячем мобильный футер
+        mobileFooterHTML = {
+            innerHTML: mainSlides[mainSlides.length - 1].innerHTML,
+            classes: mainSlides[mainSlides.length - 1].classList
+        }
+
+        mainSlides[mainSlides.length - 1].remove()
+
+        mainSlides = Array.from(mainSlides).slice(1, mainSlides.length - 1)
     }
     slider.params.freeMode.enabled = false
     slider.params.parallax.enabled = true
@@ -472,17 +529,4 @@ export const slidersToDesktop = (slider, data) => {
     Array.from(mobileInsliders).forEach(item => {
         item.classList.add('hidden-mobile-inslider')
     })
-}
-
-
-// мобильная версия
-
-// анимация кнопки подробнее
-export const mobileMoreInfoHandler = () => {
-    Array.from(mobileMoreInfoButtons).forEach(item =>
-        item.addEventListener('click', () => {
-            let lines = item.querySelector('.more_info_mobile_button').querySelectorAll('div')
-            lines[0].classList.toggle('_active-more_info_mobile')
-            lines[1].classList.toggle('_active-more_info_mobile')
-        }))
 }

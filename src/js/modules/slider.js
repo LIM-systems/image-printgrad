@@ -18,7 +18,10 @@ import {
     isMobile,
     sliderElement,
     wrapper,
-    wrapperScrollListenerToggle
+    wrapperScrollListenerToggle,
+    transformValue,
+    currentTransformValue,
+    initTransformValue
 } from './common'
 import { inSlidersInit } from './insliders'
 import { mainMiniSwipersInit, mainMobileMiniSlidersInit } from './mini-swipers'
@@ -26,6 +29,7 @@ import { mainMiniSwipersInit, mainMobileMiniSlidersInit } from './mini-swipers'
 export const mainSliderInit = () => {
     const screens = document.querySelectorAll('.screen__content')
     let subslider = null
+    let typed
     const slider = new Swiper('.page', {
         wrapperClass: 'page__wrapper',
         slideClass: 'page__screen',
@@ -37,7 +41,7 @@ export const mainSliderInit = () => {
         },
         watchOverflow: true,
         speed: 900,
-        observer: true,
+        // observer: true,
         observeParents: true,
         observeSlideChildren: true,
         updateOnWindowResize: true,
@@ -77,12 +81,19 @@ export const mainSliderInit = () => {
                     moreInfoHandle(data)
                     // isMobile = true
                 })
-                // активация кнопок "подробнее" в мобильной версии
-                mobileMoreInfoHandler()
                 // отключение скролла на городах на последнем слайде
                 scrollToggle(slider)
                 if (isMobile) {
                     slidersToMobile(slider)
+                    setTimeout(() => {
+                        typed = new Typed('.typed-text-1-mobile', {
+                            strings: ['преумножить уровень доходов', 'перейти на новый уровень сервиса',
+                                'достичь успеха в развитии бизнеса'],
+                            typeSpeed: 50,
+                            backSpeed: 30,
+                            loop: true
+                        })
+                    }, 300)
                 } else {
                     slidersToDesktop(slider, parallaxAttributesData)
                     wrapper.addEventListener('wheel', wrapperScrollHandler, { passive: false })
@@ -116,6 +127,22 @@ export const mainSliderInit = () => {
                         parallaxAttributesData = data
                         wrapper.removeEventListener('wheel', wrapperScrollHandler, { passive: false })
                         slider.enable()
+                        setTimeout(() => {
+                            if (typed) {
+                                let typedText = document.querySelector('.typed-text-1-mobile')
+                                typedText.nextSibling.remove()
+                                console.log(typedText.nextSibling)
+                                typed.destroy()
+                                typed = null
+                                typed = new Typed('.typed-text-1-mobile', {
+                                    strings: ['преумножить уровень доходов', 'перейти на новый уровень сервиса',
+                                        'достичь успеха в развитии бизнеса'],
+                                    typeSpeed: 50,
+                                    backSpeed: 30,
+                                    loop: true
+                                })
+                            }
+                        }, 300)
                     }
                 } else {
                     isMobile = false
@@ -124,8 +151,14 @@ export const mainSliderInit = () => {
                     wrapper.addEventListener('wheel', wrapperScrollHandler, { passive: false })
                 }
                 Array.from(mobileInsliders).splice(0, mobileInsliders.length - 1).forEach((item, index) => {
-                    mobileSlidesHandlers(item, mobileSlideState[index], true)
+                    mobileSlidesHandlers(item, index, true)
                 })
+            },
+            scroll: (slider, e) => {
+                if (isMobile) slider.update()
+            },
+            touchMove: (slider, e) => {
+                slider.update()
             },
             progress: (slider, progress) => {
                 // записываем прогресс

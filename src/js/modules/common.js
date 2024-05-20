@@ -24,7 +24,7 @@ export let subSliderProgress = 0
 // скрытие/открытие мобильного меню
 export const toogleMobileMenu = (repeat = false) => {
     const mobileMenu = document.querySelector('.mobile_main_menu')
-    const mobileMenuOpen = document.querySelector('.main_menu-burger')
+    const mobileMenuOpen = document.querySelectorAll('.main_menu-burger')[1]
     const mobileMenuClose = document.querySelector('.main_menu-burger-close')
     if (mobileMenuOpen) {
         mobileMenuOpen.addEventListener('click', () => {
@@ -81,7 +81,7 @@ export const nextSlideButtons = document.querySelectorAll('.more-info-next__butt
 
 
 // футер
-export const footer = document.querySelector('.footer')
+export const footers = document.querySelectorAll('.footer')
 
 
 
@@ -89,6 +89,7 @@ export const footer = document.querySelector('.footer')
 // сабслайдер
 export const mobileSubsliderElem = document.querySelector('.subslider-mobile')
 export let mobileSubliderHTML;
+export let mobileFooterHTML;
 
 
 // все инслайдеры
