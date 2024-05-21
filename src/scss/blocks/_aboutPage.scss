@@ -1,0 +1,124 @@
+@import '_common.scss';
+
+.wrapper-about {
+    background-color: $backgroundColor;
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper-about>.header {
+    padding: 48px 20px;
+    padding-bottom: 0px;
+    max-width: $maxWidthBaseStatic;
+    margin: 0 auto;
+}
+
+
+//первый
+.about-first {
+    max-width: $maxWidthBaseStatic;
+    margin: 0 auto;
+    margin-top: 186px;
+    padding: 0px 20px;
+}
+
+.about-first p:last-child {
+    margin-top: 120px;
+}
+
+//второй
+.about-second {
+    max-width: $maxWidthBaseStatic;
+    margin: 0 auto;
+    margin-top: 48px;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.achives {
+    display: flex;
+    gap: 72px;
+}
+
+
+.achive-number {
+    display: flex;
+    color: #34EEFF;
+    margin-bottom: 15px;
+    gap: 5px;
+}
+
+.achive-number p:first-child {
+    font-size: 90px;
+    font-weight: 700;
+    line-height: 72px;
+}
+
+.achive-number p:last-child {
+    font-size: 27px;
+    line-height: 121.839%;
+    align-self: flex-end;
+}
+
+.achive-text {
+    color: rgba(0, 0, 0, 0.80);
+    font-size: 18px;
+    line-height: 121.839%;
+    font-weight: 500
+}
+
+//третий
+
+.about-third-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+    .achives {
+        gap: 15px;
+    }
+
+    .achive-number p:first-child {
+        font-size: 60px;
+        line-height: 55px;
+    }
+
+    .achive-number p:last-child {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .achive-text {
+        font-size: 14px;
+    }
+}
+
+
+
+
+@media screen and (max-width: 850px) {
+    .about-first {
+        margin-top: 100px;
+    }
+
+    .about-first p:last-child {
+        margin-top: 65px;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .about-first {
+        margin-top: 54px;
+    }
+
+    .about-first p:last-child {
+        margin-top: 56px;
+    }
+}

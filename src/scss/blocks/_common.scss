@@ -1,3 +1,22 @@
+$backgroundColor: #4FA9B2; // общий цвет бэкграунда
+$maxWidthBaseStatic: 1200px; // максимальная ширина для статических страниц
+
+body {
+    background-color: $backgroundColor;
+}
+
+.static-main-title {
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.static-white-text {
+    color: #FFF;
+    font-size: 27px;
+    line-height: 121.839%;
+}
+
 .main-title__big {
     color: #fff;
     font-size: 50px;
@@ -217,6 +236,18 @@
     pointer-events: none;
 }
 
+@media screen and (max-width: 850px) {
+    .static-main-title {
+        font-size: 30px;
+    }
+
+    .static-white-text {
+        font-size: 20px;
+        line-height: 121.839%;
+    }
+}
+
+
 @media screen and (max-width: 700px) {
     .footer {
         width: 100%;
@@ -258,6 +289,17 @@
     .footer-soc-links {
         margin-top: 24px;
         max-width: 150px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .static-main-title {
+        font-size: 26px;
+    }
+
+    .static-white-text {
+        font-size: 16px;
+        line-height: 121.839%;
     }
 }
 

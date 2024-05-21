@@ -224,6 +224,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 130%;
 }
 
 .inslider__wrapper._inslider-main-0>.i-s_screen:nth-child(2)>.screen__body.toggle-parallax-transition {
@@ -250,7 +251,7 @@
     display: inline-block;
     background-color: #fff;
     color: #34EEFF;
-    width: 225px;
+    width: 189px;
     text-align: center;
 }
 
@@ -873,11 +874,19 @@
         color: #FFF;
         font-size: 16px;
     }
+
+    .typed-text-2-wrapper {
+        width: 148px;
+    }
 }
 
 @media screen and (max-width:500px) {
     .main-slide-title-mobile {
         font-size: 20px;
         max-width: 430px;
+    }
+
+    .typed-text-2-wrapper {
+        width: 110px;
     }
 }

@@ -1,5 +1,5 @@
 import {
-    sliderBegin, navMenu, insliderIsOn,
+    navMenu, insliderIsOn,
     isSliderActive, isSliderUp, footer,
     sliderProgress,
     mainMenu,

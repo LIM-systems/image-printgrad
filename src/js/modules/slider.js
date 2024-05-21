@@ -21,7 +21,8 @@ import {
     wrapperScrollListenerToggle,
     transformValue,
     currentTransformValue,
-    initTransformValue
+    initTransformValue,
+    mobileMenu
 } from './common'
 import { inSlidersInit } from './insliders'
 import { mainMiniSwipersInit, mainMobileMiniSlidersInit } from './mini-swipers'
@@ -84,6 +85,13 @@ export const mainSliderInit = () => {
                 // отключение скролла на городах на последнем слайде
                 scrollToggle(slider)
                 if (isMobile) {
+                    const mobileMenuOpen = document.querySelectorAll('.main_menu-burger')[1]
+
+                    if (mobileMenuOpen) {
+                        mobileMenuOpen.addEventListener('click', () => {
+                            mobileMenu.classList.remove('_hide_mobile_menu')
+                        })
+                    }
                     slidersToMobile(slider)
                     setTimeout(() => {
                         typed = new Typed('.typed-text-1-mobile', {
@@ -102,6 +110,12 @@ export const mainSliderInit = () => {
                 //мобильная версия
                 Array.from(mobileInsliders).splice(0, mobileInsliders.length - 1).forEach((item, index) => {
                     moreInfoMobileHandle(item, index, true)
+                })
+
+                const mobileMenuClose = document.querySelector('.main_menu-burger-close')
+                mobileMenuClose.addEventListener('click', () => {
+                    console.log('test')
+                    mobileMenu.classList.add('_hide_mobile_menu')
                 })
             },
             slideChange: () => {
@@ -131,7 +145,6 @@ export const mainSliderInit = () => {
                             if (typed) {
                                 let typedText = document.querySelector('.typed-text-1-mobile')
                                 typedText.nextSibling.remove()
-                                console.log(typedText.nextSibling)
                                 typed.destroy()
                                 typed = null
                                 typed = new Typed('.typed-text-1-mobile', {
@@ -153,6 +166,7 @@ export const mainSliderInit = () => {
                 Array.from(mobileInsliders).splice(0, mobileInsliders.length - 1).forEach((item, index) => {
                     mobileSlidesHandlers(item, index, true)
                 })
+                console.log(sliderBegin)
             },
             scroll: (slider, e) => {
                 if (isMobile) slider.update()
@@ -162,7 +176,7 @@ export const mainSliderInit = () => {
             },
             progress: (slider, progress) => {
                 // записываем прогресс
-                sliderProgress = progress
+                if (!isMobile) sliderProgress = progress
                 // взаимодействие с саб слайдером - включение/отключение
                 // при включенном фримоде
                 if (progress === 0 && slider.params.freeMode.enabled) {
@@ -171,7 +185,7 @@ export const mainSliderInit = () => {
                     sliderBegin = false
                 }
                 // при выключенном фримоде
-                if (slider.progress === 0) {
+                if (sliderProgress === 0) {
                     setTimeout(() => sliderBegin = true, 800)
                 } else {
                     sliderBegin = false

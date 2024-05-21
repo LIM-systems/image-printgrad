@@ -22,22 +22,7 @@ export let sliderBegin = true
 export let subSliderProgress = 0
 
 // скрытие/открытие мобильного меню
-export const toogleMobileMenu = (repeat = false) => {
-    const mobileMenu = document.querySelector('.mobile_main_menu')
-    const mobileMenuOpen = document.querySelectorAll('.main_menu-burger')[1]
-    const mobileMenuClose = document.querySelector('.main_menu-burger-close')
-    if (mobileMenuOpen) {
-        mobileMenuOpen.addEventListener('click', () => {
-            mobileMenu.classList.remove('_hide_mobile_menu')
-        })
-        if (!repeat) {
-            mobileMenuClose.addEventListener('click', () => {
-                console.log('2')
-                mobileMenu.classList.add('_hide_mobile_menu')
-            })
-        }
-    }
-}
+export const mobileMenu = document.querySelector('.mobile_main_menu')
 
 // главное верхнее меню
 export const mainMenu = document.querySelector('.main_menu')

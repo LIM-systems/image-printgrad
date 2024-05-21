@@ -17,12 +17,12 @@ import {
     subSliderProgress,
     scrollToggleBlock,
     screens,
-    toogleMobileMenu,
     transformValue,
     initTransformValue,
     mobileFooterHTML,
     sliderProgress,
-    footers
+    footers,
+    mobileMenu
 } from './common'
 import { inSlidersInit } from './insliders'
 
@@ -51,7 +51,8 @@ export const wrapperScrollHandler = e => {
     // измеряем размер максимального сокрытия сабслайдера вверху
     let scrollHide = -((Math.round(window.innerHeight / 100) * 100) + 100) // насколько скрыть
     let scrollSpeed = -1 * (scrollHide / 7) // шаг пролистывания в пикселях(скорость)
-
+    // console.log(sliderBegin)
+    // console.log(!insliderIsOn)
     if (sliderBegin && !insliderIsOn) {
         if (subSliderProgress === 1 && scrollHide < subsliderElem.offsetTop && subsliderElem.offsetTop <= 0 && e.deltaY > 0) {
             // если листаем вниз
@@ -64,7 +65,7 @@ export const wrapperScrollHandler = e => {
                 scrollToggleBlock.style.transition = 'all 0.5s'
                 scrollToggleBlock.style.top = scrollHide + 'px'
                 screens[1].classList.remove('_hide_page') // плавное появление элементов на первом слайде главного слайдера
-                if (isMobile) navMenu.classList.remove('_hide_menu') // плавное появление нав-меню
+                navMenu.classList.remove('_hide_menu') // плавное появление нав-меню
                 e.preventDefault()
                 return
             }
@@ -77,8 +78,6 @@ export const wrapperScrollHandler = e => {
             && subsliderElem.offsetTop <= -scrollSpeed
             && e.deltaY < 0
             && sliderProgress === 0) {
-            console.log(subsliderElem.offsetTop)
-            console.log(-scrollSpeed)
             // если листаем вверх
             if (-scrollSpeed * 2 <= subsliderElem.offsetTop && subsliderElem.offsetTop <= -scrollSpeed) {
                 // если слайдер почти весь опущен
@@ -299,7 +298,6 @@ export const documentScroll = (slider) => {
                 slider.disable()
                 let lastScreenSurplus = lastScreen.clientHeight - sliderElement.clientHeight
                 const upValue = lastScreen.clientHeight - window.innerHeight + footers[1].clientHeight - lastScreenSurplus
-                console.log(footers[1].clientHeight)
                 lastScreen.style.top = -lastScreenSurplus + 'px'
                 sliderElement.style.overflow = 'visible'
                 sliderElement.style.top = -upValue + 'px'
@@ -483,7 +481,14 @@ export const slidersToMobile = (slider) => {
         mainSlides.push(lastSlide);
         mobileFooterHTML = undefined
 
-        toogleMobileMenu(true)
+        const mobileMenuOpen = document.querySelectorAll('.main_menu-burger')[1]
+
+        if (mobileMenuOpen) {
+            mobileMenuOpen.addEventListener('click', () => {
+                mobileMenu.classList.remove('_hide_mobile_menu')
+            })
+        }
+
     }
     slider.params.freeMode.enabled = true
     slider.params.parallax.enabled = false
@@ -499,7 +504,6 @@ export const slidersToMobile = (slider) => {
 
 export const slidersToDesktop = (slider, data) => {
     navMenu.classList.remove('_hide_menu')
-
     // прячем мобильный сабслайдер
     subsliderElem.style.display = 'block'
     if (mobileSubliderHTML === undefined) {
