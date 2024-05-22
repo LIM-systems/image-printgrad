@@ -6,6 +6,10 @@
     width: 100%;
 }
 
+.wrapper-about .main_menu>a:first-child {
+    font-weight: 800;
+}
+
 .wrapper-about>.header {
     padding: 48px 20px;
     padding-bottom: 0px;
@@ -15,19 +19,19 @@
 
 
 //первый
-.about-first {
+.about-1 {
     max-width: $maxWidthBaseStatic;
     margin: 0 auto;
     margin-top: 186px;
     padding: 0px 20px;
 }
 
-.about-first p:last-child {
+.about-1 p:last-child {
     margin-top: 120px;
 }
 
 //второй
-.about-second {
+.about-2 {
     max-width: $maxWidthBaseStatic;
     margin: 0 auto;
     margin-top: 48px;
@@ -70,14 +74,102 @@
 }
 
 //третий
+.about-3 {
+    max-width: $maxWidthBaseStatic;
+    margin: 0 auto;
+    margin-top: 48px;
+    padding: 0px 20px;
+}
 
-.about-third-items {
+.about-3-items {
     display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 48px;
+}
+
+.about-3-items-mobile {
+    display: none;
     flex-direction: column;
     gap: 8px;
 }
 
+.about-3-items-1,
+.about-3-items-2,
+.about-3-items-3 {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+}
 
+.about-3-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #00D495;
+    padding: 29px 21px;
+}
+
+.about-3-item p {
+    align-self: center;
+    text-align: center;
+}
+
+//четвёртый
+
+.about-4 {
+    max-width: $maxWidthBaseStatic;
+    margin: 0 auto;
+    margin-top: 48px;
+    padding: 0px 20px;
+}
+
+.about-4-items {
+    display: flex;
+    flex-direction: column;
+    max-width: 990px;
+    margin: 0 auto;
+    margin-top: 48px;
+}
+
+.about-4-item {
+    display: flex;
+    gap: 8px;
+}
+
+.about-4-icon img {
+    width: 180px;
+}
+
+.about-4-item:nth-child(2),
+.about-4-item:nth-child(4) {
+    align-self: flex-end;
+}
+
+.about-4-text {
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+}
+
+.about-4-text p:last-child {
+    max-width: 300px;
+    font-size: 18px;
+}
+
+//пятый
+
+.about-5 {
+    margin-top: 72px;
+    background-color: #fff;
+}
+
+//футер
+
+.wrapper-about>.footer {
+    position: relative;
+}
 
 @media screen and (max-width: 1000px) {
     .achives {
@@ -100,25 +192,143 @@
 }
 
 
-
-
 @media screen and (max-width: 850px) {
-    .about-first {
+    .about-1 {
         margin-top: 100px;
     }
 
-    .about-first p:last-child {
+    .about-1 p:last-child {
         margin-top: 65px;
     }
 }
 
+@media screen and (max-width: 700px) {
+    .about-2 {
+        gap: 30px;
+        max-width: 450px;
+    }
+
+    .achives {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .achive-item:last-child {
+        align-self: flex-end;
+    }
+
+    .about-3-items {
+        display: none;
+    }
+
+    .about-3-items-mobile {
+        display: flex;
+        margin-top: 35px;
+    }
+
+    .about-3-items-mobile .about-3-item {
+        padding: 11px 14px;
+    }
+
+    .about-4-icon img {
+        width: 100px;
+    }
+
+    .about-4-item:first-child>.about-4-text {
+        padding-top: 2px;
+    }
+
+    .about-4-item:nth-child(2)>.about-4-text {
+        padding-top: 15px;
+    }
+
+    .about-4-item:nth-child(3)>.about-4-text {
+        padding-top: 9px;
+    }
+
+    .about-4-item:nth-child(4)>.about-4-text {
+        padding-top: 20px;
+    }
+
+    .about-4-item:nth-child(5)>.about-4-text {
+        padding-top: 2px;
+    }
+
+    .about-4-text p:last-child {
+        max-width: 200px;
+        font-size: 14px;
+    }
+}
 
 @media screen and (max-width: 500px) {
-    .about-first {
+    .about-1 {
         margin-top: 54px;
     }
 
-    .about-first p:last-child {
+    .about-1 p:last-child {
         margin-top: 56px;
+    }
+
+    .about-2 {
+        max-width: 360px;
+    }
+
+    .achives {
+        gap: 20px;
+    }
+
+
+    .achive-number {
+        margin-bottom: 0px;
+        gap: 5px;
+    }
+
+    .achive-number p:first-child {
+        font-size: 35px;
+        line-height: 15px;
+    }
+
+    .achive-number p:last-child {
+        font-size: 16px;
+        margin-bottom: 0px;
+    }
+
+    // .about-4-text:first-child {
+    //     padding-top: 7px;
+    // }
+}
+
+@media screen and (max-width: 430px) {
+    .about-3 {
+        padding: 0px 5px;
+    }
+
+    .about-3-items-mobile {
+        gap: 5px;
+    }
+
+    .about-3-items-mobile .about-3-item {
+        padding: 5px 10px;
+    }
+
+    .about-3-items-1,
+    .about-3-items-2,
+    .about-3-items-3 {
+        gap: 5px;
+    }
+
+    .about-item {
+        padding: 5px 0px;
+    }
+
+    .about-4-items {
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .about-3-items-mobile .about-3-item {
+        padding: 3px 0px;
     }
 }

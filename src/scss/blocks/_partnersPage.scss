@@ -1,0 +1,95 @@
+.wrapper-partners {
+    background-color: $backgroundColor;
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper-partners .main_menu>a:last-child {
+    font-weight: 800;
+}
+
+.wrapper-partners>.header {
+    padding: 48px 20px;
+    padding-bottom: 0px;
+    max-width: $maxWidthBaseStatic;
+    margin: 0 auto;
+}
+
+//первый
+.partners-1 {
+    max-width: $maxWidthBaseStatic;
+    margin: 0 auto;
+    margin-top: 186px;
+    padding: 0px 20px;
+}
+
+.partners-1 p {
+    margin-top: 120px;
+}
+
+//второй
+.partners-2 {
+    max-width: $maxWidthBaseStatic;
+    margin: 0 auto;
+    margin-top: 120px;
+    padding: 0px 20px;
+}
+
+.partners-2-texts {
+    margin-top: 32px;
+}
+
+.partners-2-texts ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.partners-2-texts ul li {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 121.839%;
+    display: flex;
+    gap: 10px;
+}
+
+.partners-2-texts p:first-child {
+    font-size: 30px;
+}
+
+
+//третий
+.partners-3 {
+    max-width: $maxWidthBaseStatic;
+    margin: 0 auto;
+    margin-top: 72px;
+    padding: 0px 20px;
+}
+
+.partners-3 p:first-child {
+    margin-bottom: 50px;
+}
+
+
+@media screen and (max-width: 500px) {
+    .partners-1 {
+        margin-top: 60px;
+    }
+
+    .partners-2 {
+        margin-top: 56px;
+    }
+
+    .partners-2-texts {
+        margin-top: 16px;
+    }
+
+    .partners-2-texts ul {
+        gap: 5px;
+    }
+
+    .partners-2-texts ul li {
+        font-size: 14px;
+        font-weight: 400;
+    }
+}

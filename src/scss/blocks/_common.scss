@@ -17,6 +17,14 @@ body {
     line-height: 121.839%;
 }
 
+.static-blue-text {
+    color: #34EEFF;
+    font-size: 40px;
+    font-weight: 700;
+    padding: 82px 20px;
+    text-align: center;
+}
+
 .main-title__big {
     color: #fff;
     font-size: 50px;
@@ -290,6 +298,11 @@ body {
         margin-top: 24px;
         max-width: 150px;
     }
+
+    .static-blue-text {
+        font-size: 20px;
+        padding: 60px 20px;
+    }
 }
 
 @media screen and (max-width:500px) {
@@ -300,6 +313,11 @@ body {
     .static-white-text {
         font-size: 16px;
         line-height: 121.839%;
+    }
+
+    .static-blue-text {
+        font-size: 18px;
+        padding: 40px 20px;
     }
 }
 

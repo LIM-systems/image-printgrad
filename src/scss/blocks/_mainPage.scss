@@ -1,7 +1,8 @@
 .header {
-    width: 100%;
+    max-width: 1200px;
     display: flex;
     justify-content: space-between;
+    margin: 0 auto;
 }
 
 .logo a {
@@ -11,6 +12,19 @@
 }
 
 .main_menu {
+    display: flex;
+    justify-content: space-between;
+    gap: 35px;
+    position: fixed;
+    top: 45px;
+    right: calc(50% - 600px);
+    z-index: 1550;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.main_menu._static {
     display: flex;
     justify-content: space-between;
     gap: 35px;
@@ -172,6 +186,12 @@
     font-size: 18px;
     color: #fff;
 
+}
+
+@media screen and (max-width: 1250px) {
+    .main_menu {
+        right: calc(75% - 600px);
+    }
 }
 
 @media screen and (max-width: 850px) {

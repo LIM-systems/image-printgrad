@@ -114,7 +114,6 @@ export const mainSliderInit = () => {
 
                 const mobileMenuClose = document.querySelector('.main_menu-burger-close')
                 mobileMenuClose.addEventListener('click', () => {
-                    console.log('test')
                     mobileMenu.classList.add('_hide_mobile_menu')
                 })
             },
