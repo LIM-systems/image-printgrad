@@ -7,6 +7,12 @@ body {
 
 .static-main-title {
     color: #FFF;
+    font-size: 42px;
+    font-weight: 800;
+}
+
+.static-subtitle {
+    color: #FFF;
     font-size: 40px;
     font-weight: 700;
 }
@@ -244,6 +250,27 @@ body {
     pointer-events: none;
 }
 
+/* Кастомизация скроллбара для всей страницы в браузерах на основе WebKit */
+html::-webkit-scrollbar {
+    width: 12px;
+    /* Ширина скроллбара */
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+    /* Цвет дорожки */
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #34EEFF;
+    /* Цвет ползунка */
+    border-radius: 6px;
+    /* Закругленные углы ползунка */
+}
+
+
+
+
 @media screen and (max-width: 850px) {
     .static-main-title {
         font-size: 30px;
@@ -252,6 +279,10 @@ body {
     .static-white-text {
         font-size: 20px;
         line-height: 121.839%;
+    }
+
+    .static-subtitle {
+        font-size: 30px;
     }
 }
 

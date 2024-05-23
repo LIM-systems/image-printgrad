@@ -66,8 +66,87 @@
     padding: 0px 20px;
 }
 
-.partners-3 p:first-child {
+.partners-3 .static-white-text:first-child {
     margin-bottom: 50px;
+}
+
+.partners-3>.static-white-text:nth-child(4) {
+    margin-top: 72px;
+}
+
+.partners-3>.static-white-text:nth-child(5) {
+    margin-top: 32px;
+    font-size: 18px;
+}
+
+.partners-3-items {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.partners-3-white-text {
+    color: #fff;
+}
+
+.partners-3-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.partners-3-item p {
+    max-width: 275px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+
+.partners-3-icon {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+
+//четвёртый
+.partners-4 {
+    margin-top: 72px;
+    background-color: #fff;
+}
+
+.partners-4 p {
+    max-width: 990px;
+    margin: 0 auto;
+}
+
+//футер
+
+.wrapper-partners>.footer {
+    position: relative;
+}
+
+@media screen and (max-width: 850px) {
+    .partners-3>.static-white-text:nth-child(4) {
+        margin-top: 48px;
+    }
+
+    .partners-3>.static-white-text:nth-child(5) {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .partners-3-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .partners-4 p {
+        max-width: 550px;
+        margin: 0 auto;
+    }
 }
 
 
@@ -91,5 +170,42 @@
     .partners-2-texts ul li {
         font-size: 14px;
         font-weight: 400;
+    }
+
+    .partners-3-items {
+        margin-top: 24px;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+    }
+
+    .partners-3-item {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .partners-3-item:nth-child(4) {
+        grid-row-start: 6;
+    }
+
+    .partners-3-item:nth-child(5) {
+        grid-row-start: 4;
+    }
+
+    .partners-3-item:nth-child(6) {
+        grid-row-start: 5;
+    }
+
+    .partners-3-item p {
+        max-width: 165px;
+        font-size: 14px;
+        align-self: center;
+        text-align: left;
+        margin: 0;
+    }
+
+    .partners-3-icon {
+        max-width: 96px;
+        margin: 0;
     }
 }

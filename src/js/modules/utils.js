@@ -323,10 +323,14 @@ export const documentScroll = (slider) => {
 
 
 window.addEventListener('load', () => {
+    const elements = ['.typed-text-1', '.typed-text-2', '.typed-text-2-mobile']
+    let isExists = true
+    elements.forEach(item => { if (!document.querySelector(item)) isExists = false })
+    if (!isExists) return
 
     // печатание и стирание текста
     setTimeout(() => {
-        const typed = new Typed('.typed-text-1', {
+        const typed = new Typed(elements[0], {
             strings: ['преумножить уровень доходов', 'перейти на новый уровень сервиса',
                 'достичь успеха в развитии бизнеса'],
             typeSpeed: 50,
@@ -336,7 +340,7 @@ window.addEventListener('load', () => {
     }, 300)
 
     setTimeout(() => {
-        const typed = new Typed('.typed-text-2', {
+        const typed = new Typed(elements[1], {
             strings: ['удобно', 'легко',
                 'надежно', 'выгодно'],
             typeSpeed: 80,
@@ -346,7 +350,7 @@ window.addEventListener('load', () => {
     }, 300)
 
     setTimeout(() => {
-        const typed = new Typed('.typed-text-2-mobile', {
+        const typed = new Typed(elements[2], {
             strings: ['удобно', 'легко',
                 'надежно', 'выгодно'],
             typeSpeed: 80,
