@@ -51,8 +51,7 @@ export const wrapperScrollHandler = e => {
     // измеряем размер максимального сокрытия сабслайдера вверху
     let scrollHide = -((Math.round(window.innerHeight / 100) * 100) + 100) // насколько скрыть
     let scrollSpeed = -1 * (scrollHide / 7) // шаг пролистывания в пикселях(скорость)
-    // console.log(sliderBegin)
-    // console.log(!insliderIsOn)
+
     if (sliderBegin && !insliderIsOn) {
         if (subSliderProgress === 1 && scrollHide < subsliderElem.offsetTop && subsliderElem.offsetTop <= 0 && e.deltaY > 0) {
             // если листаем вниз
@@ -104,9 +103,11 @@ export const wrapperScrollHandler = e => {
 
     // анимация снижения яркости главного верхнего меню
     const mainMenuLinks = mainMenu.querySelectorAll('a')
-    subSliderProgress === 0 ?
-        Array.from(mainMenuLinks).forEach(item => item.classList.remove('main_menu_in-down')) :
+    if (- scrollSpeed * 2 < subsliderElem.offsetTop) {
+        Array.from(mainMenuLinks).forEach(item => item.classList.remove('main_menu_in-down'))
+    } else {
         Array.from(mainMenuLinks).forEach(item => item.classList.add('main_menu_in-down'))
+    }
 
     // включение и отключение главного слайдера
     if (scrollHide >= subsliderElem.offsetTop
@@ -283,6 +284,7 @@ export const scrollToggle = (slider) => {
 // обработчик скролла на весь документ
 // если это последний слайд и мы крутим дальше вниз
 // чтобы увидеть футер
+let transitionStopped = false
 export const documentScroll = (slider) => {
     document.addEventListener('wheel', e => {
         const lastContent = sliderElement.querySelectorAll('.screen__content')[slider.slides.length - 1]
@@ -291,24 +293,32 @@ export const documentScroll = (slider) => {
         //     <= window.innerHeight
 
         if (!isMobile) {
-            if (e.deltaY > 0 && sliderProgress >= 1 && isSliderActive) {
+            if (e.deltaY > 0 && sliderProgress >= 1 && isSliderActive && !insliderIsOn) {
                 // крутим вниз
-                navMenu.classList.add('_hide_menu')
-                isSliderUp = true
-                slider.disable()
-                let lastScreenSurplus = lastScreen.clientHeight - sliderElement.clientHeight
-                const upValue = lastScreen.clientHeight - window.innerHeight + footers[1].clientHeight - lastScreenSurplus
-                lastScreen.style.top = -lastScreenSurplus + 'px'
-                sliderElement.style.overflow = 'visible'
-                sliderElement.style.top = -upValue + 'px'
-            } else if (e.deltaY < 0 && sliderProgress >= 1 && isSliderActive) {
+                setTimeout(() => {
+                    transitionStopped = true
+                }, 800)
+                if (transitionStopped) {
+                    navMenu.classList.add('_hide_menu')
+                    isSliderUp = true
+                    slider.disable()
+                    let lastScreenSurplus = lastScreen.clientHeight - sliderElement.clientHeight
+                    const upValue = lastScreen.clientHeight - window.innerHeight + footers[1].clientHeight - lastScreenSurplus
+                    lastScreen.style.top = -lastScreenSurplus + 'px'
+                    sliderElement.style.overflow = 'visible'
+                    sliderElement.style.top = -upValue + 'px'
+                    sliderElement.style.pointerEvents = 'none'
+                }
+            } else if (e.deltaY < 0 && sliderProgress >= 1 && isSliderActive && !insliderIsOn) {
                 // крутим вверх
+                transitionStopped = false
                 sliderElement.style.top = 0 + 'px'
                 navMenu.classList.remove('_hide_menu')
                 setTimeout(() => {
                     sliderElement.style.overflow = 'hidden'
                     isSliderUp = false
                     slider.enable()
+                    sliderElement.style.pointerEvents = 'auto'
                 }, 500)
             }
             if (slider.realIndex === slider.slides.length - 2) {

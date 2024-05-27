@@ -165,7 +165,6 @@ export const mainSliderInit = () => {
                 Array.from(mobileInsliders).splice(0, mobileInsliders.length - 1).forEach((item, index) => {
                     mobileSlidesHandlers(item, index, true)
                 })
-                console.log(sliderBegin)
             },
             scroll: (slider, e) => {
                 if (isMobile) slider.update()

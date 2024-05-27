@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Принтград</title>
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <link rel="icon" type="image/x-icon" href="./img/favicons/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        @@include('blocks/po/nav_menu.html')
+        @@include('blocks/common/mobile_main_menu.html')
+        <div class="toggle-scroll"></div>
+        @@include('blocks/po/subslider.html')
+        <div class="main_menu">
+            <a href="/about.html">О компании</a>
+            <a href="/contacts.html">Офисы</a>
+            <a href="/partners.html">Партнерам</a>
+        </div>
+        <main class="page">
+            <div class="page__wrapper">
+
+                <div class="page__screen screen">
+                    <div class="screen__content">
+                        <div>
+                            @@include('blocks/po/subslider-mobile.html')
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page__screen screen">
+                    <div class="screen__content">
+                        <div data-swiper-parallax="50%" data-swiper-parallax-opacity="1">
+                            @@include('blocks/po/inside_sliders/inslider_0.html')
+                            @@include('blocks/po/inside_sliders/inslider_0_mobile.html')
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page__screen screen">
+                    <div class="screen__content">
+                        <div data-swiper-parallax="50%" data-swiper-parallax-opacity="0">
+                            @@include('blocks/po/inside_sliders/inslider_1.html')
+                            @@include('blocks/po/inside_sliders/inslider_1_mobile.html')
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page__screen screen">
+                    <div class="screen__content">
+                        <div data-swiper-parallax="50%" data-swiper-parallax-opacity="0">
+                            @@include('blocks/po/inside_sliders/inslider_2.html')
+                            @@include('blocks/po/inside_sliders/inslider_2_mobile.html')
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page__screen screen">
+                    <div class="screen__content">
+                        <div data-swiper-parallax="50%" data-swiper-parallax-opacity="0">
+                            @@include('blocks/po/inside_sliders/inslider_3.html')
+                            @@include('blocks/po/inside_sliders/inslider_3_mobile.html')
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page__screen screen footer-screen">
+                    <div class="screen__content">
+                        <div class="mobile-inslider hidden-mobile-inslider">
+                            @@include('blocks/common/footer.html')
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div class="page__pagination"></div> -->
+            <!-- <div class="page__scroll"></div> -->
+        </main>
+        @@include('blocks/common/footer.html')
+    </div>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/index.bundle.js"></script>
+</body>
+
+</html>

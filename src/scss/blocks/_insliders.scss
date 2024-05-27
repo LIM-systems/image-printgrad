@@ -213,6 +213,11 @@
     width: 355px;
 }
 
+.screen_size-6 {
+    flex: none;
+    width: 880px;
+}
+
 
 
 // вложенные слайдеры на главной странице
@@ -856,6 +861,78 @@
 .more-info-next__button img {
     align-self: center;
     width: 50%;
+}
+
+// ПО
+.inslider-po-title {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.po-white-text {
+    color: #fff;
+}
+
+.inslider-po-text {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 121.839%;
+}
+
+//Первый
+//1
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2) {
+    border: 1px solid red;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.screen__body {
+    background: url('../../img/bg/insliders/po/img-1.png');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 120%;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.screen__body.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.inslider_screen__content {
+    padding: 72px 170px;
+    padding-right: 0px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.inslider_screen__content p {
+    align-self: center;
+    max-width: 600px;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.inslider_screen__content>p:first-child {
+    margin-bottom: 32px;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.inslider_screen__content ul {
+    margin-left: 12px;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.inslider_screen__content ul li {
+    display: flex;
+    gap: 10px;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.inslider_screen__content ul li>p:first-child {
+    font-size: 20px;
+    align-self: center;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.inslider_screen__content .po-inslider-item {
+    margin-bottom: 30px;
 }
 
 

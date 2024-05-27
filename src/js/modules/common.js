@@ -3,6 +3,7 @@ export let isMobile
 export const wrapper = document.querySelector('.wrapper')
 export let wrapperScrollListenerToggle = false
 export const scrollToggleBlock = document.querySelector('.toggle-scroll')
+export const pagePath = window.location.pathname
 
 // главный слайдер
 export const sliderElement = document.querySelector('.page')
@@ -19,7 +20,7 @@ export let parallaxAttributesData = false
 // конец подслайдера на главной странице
 export const subsliderElem = document.querySelector('.subslider')
 export let sliderBegin = true
-export let subSliderProgress = 0
+export let subSliderProgress = 1
 
 // скрытие/открытие мобильного меню
 export const mobileMenu = document.querySelector('.mobile_main_menu')

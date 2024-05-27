@@ -8,7 +8,8 @@ import {
     wrapper,
     scrollToggle,
     subSliderProgress,
-    scrollToggleBlock
+    scrollToggleBlock,
+    pagePath
 } from './common'
 import { textAnimationInit } from './utils'
 
@@ -32,7 +33,7 @@ export const subsliderInit = () => {
         },
         on: {
             progress: (slider, progress) => {
-                subSliderProgress = progress
+                if (pagePath !== '/po.html') subSliderProgress = progress
             },
         }
     })

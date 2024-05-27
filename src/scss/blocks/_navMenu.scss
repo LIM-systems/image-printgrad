@@ -72,7 +72,7 @@
     height: 25px;
 }
 
-.menu__link:nth-child(2)._active {
+.menu__link.bold-menu__link._active {
     color: #00D495;
     height: 50px;
 }
@@ -81,11 +81,11 @@
     height: 35px;
 }
 
-.menu__link:nth-child(2).nav-menu_show-link {
+.menu__link.bold-menu__link.nav-menu_show-link {
     height: 55px;
 }
 
-.menu__link:nth-child(2)._active.nav-menu_show-link {
+.menu__link.bold-menu__link._active.nav-menu_show-link {
     height: 55px;
 }
 
