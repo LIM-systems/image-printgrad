@@ -22,3 +22,17 @@ export const mainMobileMiniSlidersInit = (className) => {
         speed: 900,
     })
 }
+
+export const poMobileMiniSlidersInit = (className) => {
+    const slider = new Swiper(className, {
+        direction: 'horizontal',
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        centerInsufficientSlides: true,
+        speed: 900,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    })
+}

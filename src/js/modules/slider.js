@@ -22,10 +22,11 @@ import {
     transformValue,
     currentTransformValue,
     initTransformValue,
-    mobileMenu
+    mobileMenu,
+    poMiniSwiper
 } from './common'
 import { inSlidersInit } from './insliders'
-import { mainMiniSwipersInit, mainMobileMiniSlidersInit } from './mini-swipers'
+import { mainMiniSwipersInit, mainMobileMiniSlidersInit, poMobileMiniSlidersInit } from './mini-swipers'
 
 export const mainSliderInit = () => {
     const screens = document.querySelectorAll('.screen__content')
@@ -62,6 +63,7 @@ export const mainSliderInit = () => {
                     Array.from(mainMobileMiniSliders).forEach(item =>
                         mainMobileMiniSlidersInit('.' + item.classList[1]))
                 }
+                if (poMiniSwiper) poMobileMiniSlidersInit('.' + poMiniSwiper.classList[0])
                 nextSlideButtonsInit(slider) // активация кнопок "следующий слайд"
                 documentScroll(slider) // обработчик скролла на всю страницу
                 wrapper.classList.add('_loaded')

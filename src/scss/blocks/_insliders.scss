@@ -815,7 +815,6 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    text-align: center;
 }
 
 .last-slide_inslider .main-slide-title {
@@ -882,10 +881,6 @@
 
 //Первый
 //1
-.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2) {
-    border: 1px solid red;
-}
-
 .inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.screen__body {
     background: url('../../img/bg/insliders/po/img-1.png');
     background-position: right center;
@@ -926,12 +921,511 @@
     gap: 10px;
 }
 
-.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.inslider_screen__content ul li>p:first-child {
+
+
+//2
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(3)>.screen__body {
+    background: url('../../img/bg/insliders/po/img-2.png');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 120%;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(3)>.screen__body.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(3)>.inslider_screen__content {
+    padding: 72px 20px;
+    padding-right: 0px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(3)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(3)>.inslider_screen__content p {
+    align-self: center;
+    max-width: 800px;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(3)>.inslider_screen__content>p:first-child {
+    margin-bottom: 32px;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(3)>.inslider_screen__content ul {
+    margin-left: 12px;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(3)>.inslider_screen__content ul li {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(3)>.inslider_screen__content ul li>p:first-child {
     font-size: 20px;
     align-self: center;
 }
 
-.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(2)>.inslider_screen__content .po-inslider-item {
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(3)>.inslider_screen__content .po-inslider-item {
+    margin-bottom: 30px;
+}
+
+//3
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(4)>.inslider_screen__content {
+    padding: 72px 43px;
+    padding-right: 0px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-0>.i-s_screen:nth-child(4)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+//Второй
+//1
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(2)>.screen__body {
+    background: url('../../img/bg/insliders/po/img-3.png');
+    background-position: 600% 10%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 120%;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(2)>.screen__body.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(2)>.inslider_screen__content {
+    padding: 72px 30px;
+    padding-right: 0px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(2)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(2)>.inslider_screen__content p {
+    align-self: center;
+    max-width: 800px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(2)>.inslider_screen__content>p:first-child {
+    margin-bottom: 32px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(2)>.inslider_screen__content ul {
+    margin-left: 12px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(2)>.inslider_screen__content ul li {
+    display: flex;
+    gap: 10px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(2)>.inslider_screen__content ul li>p:first-child {
+    align-self: flex-start;
+    color: #fff;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(2)>.inslider_screen__content .po-inslider-item {
+    margin-bottom: 30px;
+}
+
+
+//2
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(3)>.screen__body {
+    background: url('../../img/bg/insliders/po/img-4.png');
+    background-position: 600% 10%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 120%;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(3)>.screen__body.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(3)>.inslider_screen__content {
+    padding: 72px 30px;
+    padding-right: 0px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(3)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(3)>.inslider_screen__content p {
+    align-self: center;
+    max-width: 800px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(3)>.inslider_screen__content>p:first-child {
+    margin-bottom: 32px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(3)>.inslider_screen__content ul {
+    margin-left: 12px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(3)>.inslider_screen__content ul li {
+    display: flex;
+    gap: 10px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(3)>.inslider_screen__content ul li>p:first-child {
+    align-self: flex-start;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(3)>.inslider_screen__content .po-inslider-item {
+    margin-bottom: 30px;
+}
+
+
+//3
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.screen__body {
+    background: url('../../img/bg/insliders/po/img-3.png');
+    background-position: 600% 10%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 120%;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.screen__body.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content {
+    padding: 72px 30px;
+    padding-right: 0px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content p {
+    align-self: center;
+    max-width: 800px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content>p:first-child {
+    margin-bottom: 32px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content ul {
+    margin-left: 40px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content ul li {
+    display: flex;
+    gap: 10px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content ul li:nth-child(2),
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content ul li:nth-child(3),
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content ul li:nth-child(4),
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content ul li:nth-child(5) {
+    color: rgba(147, 245, 255, 0.80);
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content ul li>p:first-child {
+    align-self: flex-start;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(4)>.inslider_screen__content .po-inslider-item {
+    margin-bottom: 30px;
+}
+
+
+//4
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(5)>.inslider_screen__content {
+    padding: 72px 30px;
+    padding-right: 0px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(5)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(5)>.inslider_screen__content p {
+    align-self: center;
+    max-width: 800px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(5)>.inslider_screen__content>p:first-child {
+    margin-bottom: 32px;
+}
+
+//5
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(6)>.inslider_screen__content {
+    padding: 72px 30px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(6)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(6)>.inslider_screen__content p {
+    align-self: center;
+    max-width: 800px;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(6)>.inslider_screen__content>p:first-child {
+    margin-bottom: 32px;
+}
+
+//6
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(7)>.inslider_screen__content {
+    padding: 72px 43px;
+    padding-right: 0px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-1>.i-s_screen:nth-child(7)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+//Третий
+//1
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(2)>.screen__body {
+    background: url('../../img/bg/insliders/po/img-5.png');
+    background-position: 10% 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 120%;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(2)>.screen__body.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(2)>.inslider_screen__content {
+    padding: 72px 80px;
+    padding-right: 0px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(2)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(2)>.inslider_screen__content p {
+    align-self: center;
+    max-width: 800px;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(2)>.inslider_screen__content>p:first-child {
+    margin-bottom: 32px;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(2)>.inslider_screen__content ul {
+    margin-left: 12px;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(2)>.inslider_screen__content ul li {
+    display: flex;
+    gap: 10px;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(2)>.inslider_screen__content ul li>p:first-child {
+    align-self: flex-start;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(2)>.inslider_screen__content .po-inslider-item {
+    margin-bottom: 30px;
+}
+
+.po-2-items {
+    margin-top: 24px;
+    margin-left: 80px;
+}
+
+.po-2-items>p:nth-child(3) {
+    margin-top: 16px;
+}
+
+//2
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(3) {
+    background-color: #fff;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(3)>.inslider_screen__content {
+    padding: 72px 45px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(3)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(3)>.inslider_screen__content p {
+    align-self: center;
+    max-width: 800px;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(3)>.inslider_screen__content>p:first-child {
+    margin-bottom: 32px;
+    color: #4FA9B2;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(3)>.inslider_screen__content ul {
+    margin-left: 12px;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(3)>.inslider_screen__content ul li {
+    display: flex;
+    gap: 10px;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(3)>.inslider_screen__content ul li>p:first-child {
+    align-self: flex-start;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(3)>.inslider_screen__content .po-inslider-item {
+    margin-bottom: 30px;
+}
+
+.mini-po-swiper {
+    max-width: 704px;
+    height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.mini-po-swiper>.swiper-wrapper {
+    display: flex;
+}
+
+.mini-po-swiper>.buttons-mini-op-inslider {
+    position: absolute !important;
+    height: 100px;
+    width: 100px;
+    bottom: 10px !important;
+    right: 0 !important;
+}
+
+/* Стили для создания стрелки "назад" */
+.mini-po-swiper>.buttons-mini-op-inslider>.swiper-button-prev::after {
+    content: '' !important;
+}
+
+/* Стили для создания стрелки "вперед" */
+.mini-po-swiper>.buttons-mini-op-inslider>.swiper-button-next::after {
+    content: '' !important;
+}
+
+
+/* Стили для кнопки "назад" */
+.mini-po-swiper>.buttons-mini-op-inslider>.swiper-button-prev {
+    background-image: url('../../img/bg/insliders/po/prev-on.png');
+    /* Путь к вашему изображению стрелки "назад" */
+    background-size: contain;
+    /* Или 'cover', в зависимости от того, как вы хотите отобразить изображение */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.mini-po-swiper>.buttons-mini-op-inslider>.swiper-button-prev.swiper-button-disabled {
+    background-image: url('../../img/bg/insliders/po/prev-off.png');
+    /* Путь к вашему изображению стрелки "назад" */
+    background-size: contain;
+    /* Или 'cover', в зависимости от того, как вы хотите отобразить изображение */
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+}
+
+/* Стили для кнопки "вперед" */
+.mini-po-swiper>.buttons-mini-op-inslider>.swiper-button-next {
+    background-image: url('../../img/bg/insliders/po/next-on.png');
+    /* Путь к вашему изображению стрелки "вперед" */
+    background-size: contain;
+    /* Или 'cover', в зависимости от того, как вы хотите отобразить изображение */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Стили для кнопки "вперед" */
+.mini-po-swiper>.buttons-mini-op-inslider>.swiper-button-next.swiper-button-disabled {
+    background-image: url('../../img/bg/insliders/po/next-off.png');
+    /* Путь к вашему изображению стрелки "вперед" */
+    background-size: contain;
+    /* Или 'cover', в зависимости от того, как вы хотите отобразить изображение */
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+}
+
+.mini-po-swiper img {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.mini-po-swiper p {
+    margin-top: 16px;
+    color: #4FA9B2;
+}
+
+//3
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(4)>.inslider_screen__content {
+    padding: 72px 43px;
+    padding-right: 0px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-2>.i-s_screen:nth-child(4)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+//Четвёртый
+//1
+.inslider__wrapper._inslider-po-3>.i-s_screen:nth-child(2)>.inslider_screen__content {
+    padding: 72px 80px;
+    padding-right: 0px;
+    transition: all 0.3s !important;
+}
+
+.inslider__wrapper._inslider-po-3>.i-s_screen:nth-child(2)>.inslider_screen__content.toggle-parallax-transition {
+    transition: all 1s !important;
+}
+
+.inslider__wrapper._inslider-po-3>.i-s_screen:nth-child(2)>.inslider_screen__content p {
+    align-self: center;
+    max-width: 800px;
+}
+
+.inslider__wrapper._inslider-po-3>.i-s_screen:nth-child(2)>.inslider_screen__content a {
+    color: #000;
+}
+
+.inslider__wrapper._inslider-po-3>.i-s_screen:nth-child(2)>.inslider_screen__content>p:first-child {
+    margin-bottom: 32px;
+}
+
+.inslider__wrapper._inslider-po-3>.i-s_screen:nth-child(2)>.inslider_screen__content ul {
+    margin-left: 12px;
+}
+
+.inslider__wrapper._inslider-po-3>.i-s_screen:nth-child(2)>.inslider_screen__content ul li {
+    display: flex;
+    gap: 10px;
+}
+
+.inslider__wrapper._inslider-po-3>.i-s_screen:nth-child(2)>.inslider_screen__content ul li>p:first-child {
+    align-self: flex-start;
+}
+
+.inslider__wrapper._inslider-po-3>.i-s_screen:nth-child(2)>.inslider_screen__content .po-inslider-item {
     margin-bottom: 30px;
 }
 
