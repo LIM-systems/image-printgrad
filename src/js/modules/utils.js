@@ -22,7 +22,8 @@ import {
     mobileFooterHTML,
     sliderProgress,
     footers,
-    mobileMenu
+    mobileMenu,
+    pagePath
 } from './common'
 import { inSlidersInit } from './insliders'
 

@@ -35,6 +35,7 @@ export const inSlidersExs = []
 export const mainMiniSwipers = document.querySelectorAll('.mini-swiper')
 export const mainMobileMiniSliders = document.querySelectorAll('.mobile_mini_slider')
 export const poMiniSwiper = document.querySelector('.mini-po-swiper')
+export const poMiniSwiperMobile = document.querySelector('.mini-po-swiper-mobile')
 
 // все кнопки "подробнее"
 export const moreInfoButtons = document.querySelectorAll('.more-info')

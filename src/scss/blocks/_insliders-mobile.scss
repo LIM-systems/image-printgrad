@@ -383,6 +383,253 @@
     margin-bottom: 16px;
 }
 
+
+//ПО
+// Первый
+.mobile-inslider_0_2.po-mobile-inslider {
+    background: url('../../img/bg/insliders/po/mobile-img-1.png');
+    background-size: cover;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 35px 23px;
+}
+
+.mobile-inslider_0_2.po-mobile-inslider>.subtitle-mini {
+    margin-top: 0px;
+}
+
+.mobile-inslider-slide.po-mobile-inslider .po-inslider-item {
+    margin-top: 16px;
+}
+
+.mobile-inslider-slide.po-mobile-inslider ul li {
+    display: flex;
+    gap: 10px;
+}
+
+.mobile-inslider-slide.po-mobile-inslider ul li p:first-child {
+    align-self: flex-start;
+}
+
+.mobile-inslider-slide.po-mobile-inslider .inslider-po-text {
+    line-height: normal;
+    font-weight: 400;
+}
+
+.mobile-inslider_0_3.po-mobile-inslider {
+    background: url('../../img/bg/insliders/po/mobile-img-2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 32px 16px;
+}
+
+.mobile-inslider_0_3.po-mobile-inslider p {
+    margin-bottom: 0px;
+}
+
+.mobile-inslider_0_3.po-mobile-inslider>.subtitle-mini {
+    margin-top: 0px;
+}
+
+
+//Второй
+.mobile-inslider_1_2.po-mobile-inslider {
+    background: url('../../img/bg/insliders/po/img-3.png');
+    background-size: cover;
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    padding: 35px 23px;
+}
+
+.mobile-inslider_1_2.po-mobile-inslider>.subtitle-mini {
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+.mobile-inslider_1_3.po-mobile-inslider {
+    background: url('../../img/bg/insliders/po/img-4.png');
+    background-size: cover;
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    padding: 35px 23px;
+}
+
+.mobile-inslider_1_3.po-mobile-inslider>.subtitle-mini {
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+.mobile-inslider_1_3.po-mobile-inslider p:last-child,
+.mobile-inslider_1_5.po-mobile-inslider p:last-child {
+    position: relative;
+    bottom: 0px;
+    right: 0px;
+    font-weight: 400;
+    color: #000;
+    max-width: 100%px;
+}
+
+.mobile-inslider_1_3.po-mobile-inslider p:first-child {
+    color: #000;
+}
+
+.mobile-inslider_1_3.po-mobile-inslider .subtitle-mini {
+    color: #fff !important;
+    margin-bottom: 32px !important;
+}
+
+
+.mobile-inslider_1_4.po-mobile-inslider {
+    background: url('../../img/bg/insliders/po/img-3.png');
+    background-size: cover;
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    padding: 35px 23px;
+    display: block;
+}
+
+.mobile-inslider_1_4.po-mobile-inslider>.subtitle-mini {
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+.mobile-inslider_1_4.po-mobile-inslider ul {
+    margin-left: 30px;
+}
+
+.mobile-inslider_1_4.po-mobile-inslider ul li:nth-child(2),
+.mobile-inslider_1_4.po-mobile-inslider ul li:nth-child(3),
+.mobile-inslider_1_4.po-mobile-inslider ul li:nth-child(4),
+.mobile-inslider_1_4.po-mobile-inslider ul li:nth-child(5) {
+    margin-left: 13px;
+    color: #93F5FF;
+}
+
+
+.mobile-inslider_1_5.po-mobile-inslider {
+    padding: 35px 23px;
+    background-color: #4FA9B2;
+}
+
+.mobile-inslider_1_5.po-mobile-inslider>.subtitle-mini {
+    margin-top: 0px;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.mobile-inslider_1_6.po-mobile-inslider {
+    background: none;
+    padding: 35px 23px;
+    background-color: #4FA9B2;
+    display: block;
+}
+
+.mobile-inslider_1_6.po-mobile-inslider>.subtitle-mini {
+    margin-top: 0px;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.mini-po-swiper-mobile {
+    overflow: hidden;
+    width: 233px;
+    height: 534px;
+    margin: 0 auto;
+}
+
+.mini-po-swiper-mobile .swiper-slide:nth-child(4) img {
+    width: 233px;
+    height: 420px;
+    overflow: hidden;
+}
+
+.mini-po-swiper-mobile .swiper-slide p {
+    color: #D6D4D4;
+    font-size: 14px !important;
+}
+
+
+//Третий
+.mobile-inslider_2_2.po-mobile-inslider {
+    background: url('../../img/bg/insliders/po/mobile-img-3.png');
+    background-size: cover;
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    padding: 35px 23px;
+}
+
+.mobile-inslider_2_2.po-mobile-inslider>.subtitle-mini {
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+.mobile-inslider_2_2.po-mobile-inslider .po-2-items {
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+.mobile-inslider_2_2.po-mobile-inslider .po-2-items>p:nth-child(3) {
+    margin-top: 10px;
+}
+
+
+.mobile-inslider_2_3.po-mobile-inslider {
+    background: none;
+    background-color: #fff;
+    padding: 35px 23px;
+}
+
+.mobile-inslider_2_3.po-mobile-inslider>.subtitle-mini {
+    margin-top: 0px;
+    margin-bottom: 16px;
+    color: #4FA9B2;
+}
+
+.mobile-inslider_2_3.po-mobile-inslider .po-2-items {
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+.mobile-inslider_2_3.po-mobile-inslider .po-2-items>p:nth-child(3) {
+    margin-top: 10px;
+}
+
+.mobile-inslider_2_3.po-mobile-inslider .mini-po-swiper {
+    height: 230px;
+}
+
+.mobile-inslider_2_3.po-mobile-inslider .mini-po-swiper p {
+    font-size: 14px !important;
+    margin-top: 10px;
+}
+
+//Четвёртый
+.mobile-inslider_3_2.po-mobile-inslider {
+    background: none;
+    background-color: #4FA9B2;
+    padding: 35px 23px;
+}
+
+.mobile-inslider_3_2.po-mobile-inslider>.subtitle-mini {
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+.mobile-inslider_3_2.po-mobile-inslider .po-2-items {
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+.mobile-inslider_3_2.po-mobile-inslider .po-2-items>p:nth-child(3) {
+    margin-top: 10px;
+}
+
+.mobile-inslider_3_2.po-mobile-inslider ul li a {
+    color: #000;
+}
+
+
+
 @media screen and (max-width: 550px) {
 
     //Первый
@@ -427,6 +674,15 @@
         max-width: 280px;
     }
 
+    .mobile-inslider-slide.po-mobile-inslider>.main-slide-title.subtitle-mini {
+        font-size: 18px !important;
+    }
+
+    .mobile-inslider-slide.po-mobile-inslider .inslider-po-title,
+    .mobile-inslider-slide.po-mobile-inslider .inslider-po-text {
+        font-size: 14px;
+    }
+
     .mobile-inslider_0_4 p {
         color: #4FA9B2;
         max-width: 330px;
@@ -455,6 +711,10 @@
     //Второй
     .mobile-inslider_1_2 .tagline-title-mobile {
         max-width: 400px;
+    }
+
+    .mobile-inslider_1_4.po-mobile-inslider ul li>p:first-child {
+        font-size: 14px;
     }
 
     //Третий

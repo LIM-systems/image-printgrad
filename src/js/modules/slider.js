@@ -23,10 +23,12 @@ import {
     currentTransformValue,
     initTransformValue,
     mobileMenu,
-    poMiniSwiper
+    poMiniSwiper,
+    poMiniSwiperMobile,
+    pagePath
 } from './common'
 import { inSlidersInit } from './insliders'
-import { mainMiniSwipersInit, mainMobileMiniSlidersInit, poMobileMiniSlidersInit } from './mini-swipers'
+import { mainMiniSwipersInit, mainMobileMiniSlidersInit, poMiniSlidersInit, poMobileMiniSlidersInit } from './mini-swipers'
 
 export const mainSliderInit = () => {
     const screens = document.querySelectorAll('.screen__content')
@@ -63,7 +65,8 @@ export const mainSliderInit = () => {
                     Array.from(mainMobileMiniSliders).forEach(item =>
                         mainMobileMiniSlidersInit('.' + item.classList[1]))
                 }
-                if (poMiniSwiper) poMobileMiniSlidersInit('.' + poMiniSwiper.classList[0])
+                if (poMiniSwiper) poMiniSlidersInit('.' + poMiniSwiper.classList[0])
+                if (poMiniSwiperMobile) poMobileMiniSlidersInit('.' + poMiniSwiperMobile.classList[0])
                 nextSlideButtonsInit(slider) // активация кнопок "следующий слайд"
                 documentScroll(slider) // обработчик скролла на всю страницу
                 wrapper.classList.add('_loaded')
@@ -96,13 +99,16 @@ export const mainSliderInit = () => {
                     }
                     slidersToMobile(slider)
                     setTimeout(() => {
-                        typed = new Typed('.typed-text-1-mobile', {
-                            strings: ['преумножить уровень доходов', 'перейти на новый уровень сервиса',
-                                'достичь успеха в развитии бизнеса'],
-                            typeSpeed: 50,
-                            backSpeed: 30,
-                            loop: true
-                        })
+                        const typedTextEl = document.querySelector('.typed-text-1-mobile')
+                        if (typedTextEl) {
+                            typed = new Typed('.typed-text-1-mobile', {
+                                strings: ['преумножить уровень доходов', 'перейти на новый уровень сервиса',
+                                    'достичь успеха в развитии бизнеса'],
+                                typeSpeed: 50,
+                                backSpeed: 30,
+                                loop: true
+                            })
+                        }
                     }, 300)
                 } else {
                     slidersToDesktop(slider, parallaxAttributesData)
@@ -145,16 +151,18 @@ export const mainSliderInit = () => {
                         setTimeout(() => {
                             if (typed) {
                                 let typedText = document.querySelector('.typed-text-1-mobile')
-                                typedText.nextSibling.remove()
-                                typed.destroy()
-                                typed = null
-                                typed = new Typed('.typed-text-1-mobile', {
-                                    strings: ['преумножить уровень доходов', 'перейти на новый уровень сервиса',
-                                        'достичь успеха в развитии бизнеса'],
-                                    typeSpeed: 50,
-                                    backSpeed: 30,
-                                    loop: true
-                                })
+                                if (typedText) {
+                                    typedText.nextSibling.remove()
+                                    typed.destroy()
+                                    typed = null
+                                    typed = new Typed('.typed-text-1-mobile', {
+                                        strings: ['преумножить уровень доходов', 'перейти на новый уровень сервиса',
+                                            'достичь успеха в развитии бизнеса'],
+                                        typeSpeed: 50,
+                                        backSpeed: 30,
+                                        loop: true
+                                    })
+                                }
                             }
                         }, 300)
                     }
