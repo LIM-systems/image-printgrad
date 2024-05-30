@@ -103,7 +103,7 @@ export const wrapperScrollHandler = e => {
     }
 
     // анимация снижения яркости главного верхнего меню
-    const mainMenuLinks = mainMenu.querySelectorAll('a')
+    const mainMenuLinks = mainMenu.children
     if (- scrollSpeed * 2 < subsliderElem.offsetTop) {
         Array.from(mainMenuLinks).forEach(item => item.classList.remove('main_menu_in-down'))
     } else {

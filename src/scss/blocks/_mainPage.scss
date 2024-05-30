@@ -5,7 +5,7 @@
     margin: 0 auto;
 }
 
-.logo a {
+.logo {
     font-size: 18px;
     font-weight: 700;
     color: #000;
@@ -44,19 +44,23 @@
 }
 
 
-.main_menu a {
+.main_menu a,
+.main_menu p {
     font-size: 18px;
     font-weight: 500;
     color: #000;
     transition: all 0.3s;
+    cursor: pointer;
 }
 
-.main_menu a.main_menu_in-down {
+.main_menu a.main_menu_in-down,
+.main_menu p.main_menu_in-down {
     color: #00000075;
     transition: all 0.3s;
 }
 
-.main_menu a.main_menu_in-down:hover {
+.main_menu a.main_menu_in-down:hover,
+.main_menu p.main_menu_in-down:hover {
     color: #000;
     transition: all 0.3s;
 }
@@ -266,7 +270,7 @@
 }
 
 @media screen and (max-width: 450px) {
-    .logo a {
+    .logo {
         font-size: 20px;
     }
 }

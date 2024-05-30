@@ -10,6 +10,7 @@
 
     <link rel="icon" type="image/x-icon" href="./img/favicons/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon.png" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -17,6 +18,7 @@
         @@include('blocks/mainPage/main_menu.html')
         @@include('blocks/common/mobile_main_menu.html')
         <div class="main_menu">
+            <a href="/">Главная</a>
             <a href="/about.html">О компании</a>
             <a href="/contacts.html">Офисы</a>
             <a href="">Партнерам</a>
@@ -27,6 +29,10 @@
         @@include('blocks/partners/4_block.html')
         @@include('blocks/common/footer.html')
     </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <script src="./js/index.bundle.js"></script>
 </body>
 

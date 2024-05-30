@@ -4,7 +4,7 @@
     width: 100%;
 }
 
-.wrapper-contacts .main_menu>a:nth-child(2) {
+.wrapper-contacts .main_menu>a:nth-child(3) {
     font-weight: 800;
 }
 
@@ -41,8 +41,13 @@
     font-weight: 500;
 }
 
-.contacts-1-line {
-    width: 100%;
+.contacts-1-main-office p:nth-child(2) {
+    text-align: center;
+}
+
+.contacts-d-line {
+    max-width: $maxWidthBaseStatic;
+    margin: 0 auto;
     height: 1px;
     background-color: #D6D4D4;
 }
@@ -56,12 +61,16 @@
     padding: 0px 20px;
 }
 
-.contacts-2 p:first-child {
-    margin-bottom: 40px;
+.contacts-2>p:first-child {
+    margin-bottom: 75px;
 }
 
 .contacts-2-item {
-    margin-bottom: 32px;
+    margin-bottom: 60px;
+}
+
+.contacts-2-item>.static-white-text {
+    margin-bottom: 15px;
 }
 
 .contacts-2-item:last-child {

@@ -2,7 +2,6 @@ import {
     navMenu, insliderIsOn,
     isSliderActive, isSliderUp, footer,
     sliderProgress,
-    mainMenu,
     isMobile,
     subsliderElem,
     wrapper,

@@ -74,6 +74,7 @@ export const nextSlideButtonsInit = (slider) => {
                 text.classList.remove('_hide-more-info__title')
                 circles[0].classList.remove('_hide-more-info__button')
                 circles[1].classList.add('_hide-more-info__button')
+                mainMenu.classList.remove('_hide_main_menu')
                 insliderIsOn = false
                 toogleParallax(inSliders[activeInslider], data)
             }, 1000)
@@ -86,6 +87,7 @@ export const nextSlideButtonsInit = (slider) => {
 // вешаем обработчик на кнопку назад при открытом внутреннем слайдере
 export const inSliderBackButtonHandle = slider => {
     navBackButton.addEventListener('click', () => {
+        const data = toogleParallax(inSliders[activeInslider])
         mainMenu.classList.remove('_hide_main_menu')
         const wrapper = inSliders[activeInslider].querySelector('.inslider__wrapper')
         const text = moreInfoButtons[activeInslider].querySelector('.more-info__title')
@@ -101,6 +103,7 @@ export const inSliderBackButtonHandle = slider => {
             circles[1].classList.add('_hide-more-info__button')
             slider.enable()
             insliderIsOn = false
+            toogleParallax(inSliders[activeInslider], data)
         }, 1000)
     })
 }
