@@ -1,2 +1,5 @@
 import { pagesInit } from './modules/pagesInit'
-pagesInit()
+
+document.addEventListener('DOMContentLoaded', () => {
+    pagesInit()
+})
