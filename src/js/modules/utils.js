@@ -289,7 +289,8 @@ let transitionStopped = false
 export const documentScroll = (slider) => {
     document.addEventListener('wheel', e => {
         const lastContent = sliderElement.querySelectorAll('.screen__content')[slider.slides.length - 1]
-        const lastScreen = sliderElement.querySelectorAll('.screen')[slider.slides.length - 1]
+        const lastScreen = sliderElement.querySelectorAll('.screen')[slider.slides.length - 3]
+        console.log(lastScreen)
         // const isEnd = lastContent.getBoundingClientRect().bottom
         //     <= window.innerHeight
 

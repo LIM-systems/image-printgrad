@@ -31,7 +31,6 @@ import { inSlidersInit } from './insliders'
 import { mainMiniSwipersInit, mainMobileMiniSlidersInit, poMiniSlidersInit, poMobileMiniSlidersInit } from './mini-swipers'
 
 export const mainSliderInit = () => {
-    const screens = document.querySelectorAll('.screen__content')
     let subslider = null
     let typed
     const slider = new Swiper('.page', {
@@ -43,6 +42,7 @@ export const mainSliderInit = () => {
         mousewheel: {
             sensitivity: 0.3,
         },
+        allowTouchMove: false,
         watchOverflow: true,
         speed: 900,
         // observer: true,
@@ -138,6 +138,7 @@ export const mainSliderInit = () => {
                         circles[1].classList.add('_hide-more-info__button')
                     })
                 }
+                slider.update()
             },
             resize: () => {
                 setScrollType(slider, wrapper)
@@ -175,6 +176,7 @@ export const mainSliderInit = () => {
                 Array.from(mobileInsliders).splice(0, mobileInsliders.length - 1).forEach((item, index) => {
                     mobileSlidesHandlers(item, index, true)
                 })
+                slider.update()
             },
             scroll: (slider, e) => {
                 if (isMobile) slider.update()
