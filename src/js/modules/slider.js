@@ -42,7 +42,7 @@ export const mainSliderInit = () => {
         mousewheel: {
             sensitivity: 0.3,
         },
-        allowTouchMove: false,
+        // allowTouchMove: false,
         watchOverflow: true,
         speed: 900,
         // observer: true,
